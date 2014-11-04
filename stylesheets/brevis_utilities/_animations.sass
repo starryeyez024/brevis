@@ -10,23 +10,23 @@
 // check out https://github.com/at-import/animation-studio
 // for more mixins
 
-@mixin alerted() 
-  &:before 
+@mixin alerted()
+  &:before
     content: ''
     position: absolute
-    top: 6px 
+    top: 6px
     right: 6px
-    height: 8px 
+    height: 8px
     width: 8px
     +border-radius(10px)
     background-color: gold
-  
-  &:after 
+
+  &:after
     content: ''
     position: absolute
-    top: 0 
+    top: 0
     right: 0
-    height: 20px 
+    height: 20px
     width: 20px
     +border-radius(20px)
     background-color: transparent
@@ -34,14 +34,5 @@
     border-width: 2px // animates
     +box-sizing(border-box)
     +animation($name: alertMe)
-  
-@keyframes alertMe 
-  // -vendor prefixes omitted for brevity, but should be used in production
-  from 
-    border-width: 3px
-    border-color: gold
-  
-  to 
-    border-width: 0
-    border-color: rgba(gold, .1)
-  
+
+

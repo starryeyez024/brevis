@@ -76,3 +76,45 @@ $content-stream-img-md: 47.5%
   width: ceil($width*($percent/100))
   height: ceil($height*($percent/100))
   background-position: 0 floor(nth(sprite-position($map, $sprite), 2)  * ($percent/100) )
+
+////////////////
+// INTERNET EXPLORER FALLBACK IMAGE SIZE SHORTCUTS
+@mixin ie-img
+  //border: pink solid 1px
+  display: block
+
+%xxs-thumbnail
+  +ie-img
+
+  width: 90px
+  height: 50px
+
+%xs-thumbnail
+  +ie-img
+  width: 140px
+  height: 85px
+
+%sm-thumbnail
+  +ie-img
+  width: 205px
+  height: 128px
+
+%md-thumbnail
+  +ie-img
+  width: 226px
+  height: 136px
+
+%lg-thumbnail
+  +ie-img
+  width: 290px
+  height: 170px
+
+%xl-thumbnail
+  +ie-img
+  width: 373px
+  height: 224px
+
+%xxl-thumbnail
+  +ie-img
+  width: 636px
+  height: 223px

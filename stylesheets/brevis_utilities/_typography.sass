@@ -29,7 +29,7 @@ $icon-font: "FontAwesome"
 
 @mixin primary-font
   font-family: $sans-serif-small
-  
+
 @mixin secondary-font
   font-family: $secondary-font
 
@@ -89,7 +89,7 @@ $icon-font: "FontAwesome"
   @if unit($lh) == 'px'
     $lh: $lh / $base-line-height
   +adjust-font-size-to($size, $lh)
-  
+
 
 @mixin text-style($size: 22px, $color: $text-primary, $link-color: inherit, $active-color: inherit, $type: null, $underline: no, $lh: 1.3)
   @if unit($lh) == 'px'
@@ -111,3 +111,11 @@ $icon-font: "FontAwesome"
   white-space: nowrap
   text-overflow: $overflow // values are: clip, ellipsis, or a string
 
+
+%list-title
+  +thick
+  +text-style($size: 16px, $lh: 18px)
+
+
+%small-text
+  +text-style($size: 12px, $lh: 16px)
