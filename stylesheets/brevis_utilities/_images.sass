@@ -7,7 +7,6 @@ $base-images: "../../blueprint/blueprint_images"
 $content-stream-img-sm: 50%
 $content-stream-img-md: 47.5%
 
-
 @mixin img-types
   .pane-node-field-cover-photo,
   .field--name-field-image
@@ -28,20 +27,20 @@ $content-stream-img-md: 47.5%
 
 %img-left
   +img-left
-  
+
 %img-right
   +img-right
 
 @mixin img2x($file, $type, $width, $height, $inline: 'false')
   @if $inline == true
     background-image: inline-image($file + '.' + $type)
-    @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) 
+    @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2)
       &
         background-image: inline-image($file + '@2x.' + $type)
         -webkit-background-size: $width $height
   @else
     background-image: image-url("#{$file}.#{$type}")
-    @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) 
+    @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2)
       &
         background-image: image-url("#{$file}@2x.#{$type}")
         -webkit-background-size: $width $height
@@ -67,7 +66,7 @@ $content-stream-img-md: 47.5%
     background-image: url($source + '/' + $filename + '.png')
 
 // https://gist.github.com/darren131/3410875
- @mixin resize-sprite($map, $sprite, $percent) 
+ @mixin resize-sprite($map, $sprite, $percent)
   $spritePath:    sprite-path($map)
   $spriteWidth:   image-width($spritePath)
   $spriteHeight:  image-height($spritePath)
@@ -76,4 +75,4 @@ $content-stream-img-md: 47.5%
   @include background-size(ceil($spriteWidth * ($percent/100)) ceil($spriteHeight * ($percent/100)))
   width: ceil($width*($percent/100))
   height: ceil($height*($percent/100))
-  background-position: 0 floor(nth(sprite-position($map, $sprite), 2)  * ($percent/100) )   
+  background-position: 0 floor(nth(sprite-position($map, $sprite), 2)  * ($percent/100) )

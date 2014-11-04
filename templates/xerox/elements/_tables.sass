@@ -1,0 +1,51 @@
+// //////////////////////////////////////////////////////////////////////////////////
+// // HTML elements: Table styles
+// //////////////////////////////////////////////////////////////////////////////////
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+  margin: 10px 0
+  padding: 0
+  //width: 100%
+  +breakpoint($max-phone-l)
+    max-width: 100%
+    display: block
+    overflow: scroll
+    overflow-x: scroll
+    overflow-y: hidden
+    
+  &.sticky-header
+    z-index: 10
+
+td,
+th 
+  padding: 0
+
+table,
+td,
+th
+  vertical-align: middle
+
+caption,
+th,
+td
+  text-align: left
+
+td,
+th
+  border-bottom: 0
+  margin: 0
+  padding: 9px 10px
+  background-color: transparent
+
+
+table.views-table
+  min-width: 320px
+
+.mobile-table
+  +breakpoint($max-phone-l)
+    tr
+      border-bottom: 10px solid transparent
+    td,th
+      display: block

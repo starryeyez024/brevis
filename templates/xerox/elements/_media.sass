@@ -1,0 +1,179 @@
+//////////////////////////////
+// Image paths - for use with interpolation syntax:
+// background: url("#{$base-images}/image-name.png")
+$sub: "../../butler"
+$sub-images: "../../butler/butler_images"
+
+////////////////
+// INTERNET EXPLORER FALLBACK IMAGE SIZE SHORTCUTS
+@mixin ie-img
+  //border: pink solid 1px
+  display: block
+
+%xxs-thumbnail
+  +ie-img
+
+  width: 90px
+  height: 50px
+
+%xs-thumbnail
+  +ie-img
+  width: 140px
+  height: 85px
+
+%sm-thumbnail
+  +ie-img
+  width: 205px
+  height: 128px
+
+%md-thumbnail
+  +ie-img
+  width: 226px
+  height: 136px
+
+%lg-thumbnail
+  +ie-img
+  width: 290px
+  height: 170px
+
+%xl-thumbnail
+  +ie-img
+  width: 373px
+  height: 224px
+
+%xxl-thumbnail
+  +ie-img
+  width: 636px
+  height: 223px
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+// Flexible Media and Cross browser improvements
+
+//
+// - This can cause issues in table cells where no width is set on the column,
+//   only in some versions of webkit and IE 7/8.
+// - declaring the width attribute on image elements and using max-width causes
+//   the "dissappering images" bug in IE8.
+// - Mapping services such as Google Maps may break also, see below for fixes.
+//
+
+/* Ethan Marcotte - http://front.ie/l8rJaA */
+img
+  line-height: 0
+  max-width: 100%
+  max-height: 100%
+
+//#page borealis is needed to override the default borealis styles
+
+#page img.borealis
+  width: 100%
+  height: auto
+  //+ie-fb
+
+// Disable width 100% for embedded photos.
+#page .embedded_photo img.borealis
+  width: auto
+  height: auto
+
+#colorbox img.borealis
+  max-width: 100% !important
+  width: auto !important
+  height: auto !important
+
+.image-fpp
+  width: 100%
+  +clearfix
+  figure
+    margin: 0
+
+// If the image fpp is inside the node body don't clear it.
+.field--name-body
+  .image-fpp:after
+    content: inherit
+    display: inherit
+    clear: inherit
+
+img,
+embed,
+object,
+video,
+media,
+.yui3-widget,
+.yui3-nfl-video
+  max-width: 100%
+  -ms-interpolation-mode: bicubic
+
+// to fix the borealis bug
+.field--type-image a
+  display: inline-block
+  .front &,
+  .section-multimedia &
+    display: block !important
+
+  .lt-ie9 &
+    display: block
+
+iframe
+  max-width: 100%
+  .sidebar &
+    width: auto
+
+
+/* Override max-width 100% for map displays */
+#map img,
+.gmap img,
+.view-gmap img,
+.openlayers-map img,
+#getlocations_map_canvas img,
+#locationmap_map img,
+.geofieldMap img,
+.views_horizontal_slider img
+  max-width: none !important
+
+// Correct overflow not hidden in IE 9/10/11.
+svg:not(:root)
+  overflow: hidden
+
+// CUSTOM IMAGE STYLES
+.media-16-9
+  +intrinsic-ratio(16/9)
+
+.media-4-3
+  +intrinsic-ratio(4/3)
+
+
+// 1. Correct `inline-block` display not defined in IE 8/9.
+// 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+
+audio,
+canvas,
+progress,
+video
+  @if support-legacy-browser(ie, "9")
+    display: inline-block
+    @if support-legacy-browser(ie, "7")
+      *display: inline
+      *zoom: 1
+  vertical-align: baseline
+
+// Prevent modern browsers from displaying `audio` without controls.
+// Remove excess height in iOS 5 devices.
+audio:not([controls])
+  display: none
+  height: 0
+
+// Remove border when inside `a` element in IE 8/9/10.
+@if support-legacy-browser(ie, "10")
+  img
+    border: 0
+    @if support-legacy-browser(ie, "7")
+      -ms-interpolation-mode: bicubic
+    // Improves image quality when scaled in IE 7. */
+
+
+// Address margin not present in IE 8/9 and Safari.
+@if support-legacy-browser(ie, "9") or support-legacy-browser(safari, "6")
+  figure
+    margin: rhythm(1) $indent-amount

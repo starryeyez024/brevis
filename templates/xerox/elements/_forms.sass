@@ -1,0 +1,413 @@
+// Forms
+// ========================================================================== 
+
+%inline-label
+  float: left
+  margin-right: 10px
+
+  
+//Known limitation: by default, Chrome and Safari on OS X allow very limited
+//styling of `select`, unless a `border` property is set.
+
+//Correct margin displayed oddly in IE 6/7.
+@if support-legacy-browser(ie, "7") 
+  form 
+    margin: 0
+
+
+// Address Firefox 4+ setting `line-height` on `input` 
+// using `!important` in the UA stylesheet.
+
+input 
+  line-height: normal
+
+.form-submit ~ p
+  clear: left
+
+textarea
+  overflow: auto
+
+// 
+// It's recommended that you don't attempt to style these elements.
+// Firefox's implementation doesn't respect box-sizing, padding, or width.
+// 
+// 1. Address box sizing set to `content-box` in IE 8/9/10.
+// 2. Remove excess padding in IE 8/9/10.
+// 3. Remove excess padding in IE 7.
+//    Known issue: excess padding remains in IE 6.
+@if support-legacy-browser(ie, "10") 
+  input[type="checkbox"],
+  input[type="radio"] 
+    +box-sizing(border-box) /* 1 */
+    padding: 0 /* 2 */
+    @if support-legacy-browser(ie, "7") 
+      *height: 13px /* 3 */
+      *width: 13px /* 3 */
+    
+
+optgroup
+  font-weight: bold
+
+// Fix the cursor style for Chrome's increment/decrement buttons. For certain
+// `font-size` values of the `input`, it causes the cursor style of the
+// decrement button to change from `default` to `text`.
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button 
+  height: auto
+
+// 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+// 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+//    (include `-moz` to future-proof).
+input[type="search"] 
+  -webkit-appearance: textfield
+  @include box-sizing(content-box)
+
+
+// Remove inner padding and search cancel button in Safari and Chrome on OS X.
+// Safari (but not Chrome) clips the cancel button when the search input has
+// padding (and `textfield` appearance).
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration 
+    -webkit-appearance: none
+  
+
+/* Addresses font-family inconsistency between 'textarea' and other form elements. */
+button,
+input,
+select,
+textarea
+  max-width: 100%
+
+
+input[type="search"]::-webkit-search-decoration 
+  display: none
+
+input:invalid,
+button:invalid,
+a.button:invalid,
+select:invalid,
+textarea:invalid 
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+
+input:focus,
+button:focus,
+a.button:focus,
+select:focus,
+textarea:focus 
+  +box-shadow(0)
+  outline: none  !important
+  z-index: 1
+
+input[type="file"]:focus, input[type="file"]:active,
+input[type="radio"]:focus,
+input[type="radio"]:active,
+input[type="checkbox"]:focus,
+input[type="checkbox"]:active 
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+
+button,
+a.button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"] 
+  +border-radius(0)
+  +background-clip(padding-box)
+  background: $glass_dk
+  border: 1px solid $glass_dk
+  cursor: pointer
+  color: $text-primary
+  display: inline-block
+  outline: 0
+  overflow: visible
+  margin: 0
+  padding: 10px 15px
+  text-shadow: white 0 1px 1px
+  text-decoration: none
+  vertical-align: top
+  width: auto
+  *padding-top: 2px
+  *padding-bottom: 0
+
+//button:hover,
+//a.button:hover,
+//input[type="reset"]:hover,
+//input[type="submit"]:hover,
+//input[type="button"]:hover 
+//  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(1px, $glass_md), color-stop(100%, #cccccc))
+//  background-image: -webkit-linear-gradient(#ffffff, $glass_md 1px, #cccccc)
+//  background-image: -moz-linear-gradient(#ffffff, $glass_md 1px, #cccccc)
+//  background-image: -o-linear-gradient(#ffffff, $glass_md 1px, #cccccc)
+//  background-image: -ms-linear-gradient(#ffffff, $glass_md 1px, #cccccc)
+//  background-image: linear-gradient(#ffffff, $glass_md 1px, #cccccc)
+//
+//button:active,
+//a.button:active,
+//input[type="reset"]:active,
+//input[type="submit"]:active,
+//input[type="button"]:active 
+//  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(1px, #dddddd), color-stop(100%, $glass_md))
+//  background-image: -webkit-linear-gradient(#ffffff, #dddddd 1px, $glass_md)
+//  background-image: -moz-linear-gradient(#ffffff, #dddddd 1px, $glass_md)
+//  background-image: -o-linear-gradient(#ffffff, #dddddd 1px, $glass_md)
+//  background-image: -ms-linear-gradient(#ffffff, #dddddd 1px, $glass_md)
+//  background-image: linear-gradient(#ffffff, #dddddd 1px, $glass_md)
+//  -webkit-box-shadow: inset rgba(0, 0, 0, 0.25) 0 1px 2px 0
+//  -moz-box-shadow: inset rgba(0, 0, 0, 0.25) 0 1px 2px 0
+//  box-shadow: inset rgba(0, 0, 0, 0.25) 0 1px 2px 0
+//  border-color: #999999 #bbbbbb #dddddd
+
+button::-moz-focus-inner,
+a.button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner 
+  border: 0
+  padding: 0
+
+a.button 
+  *padding-bottom: 3px
+
+button 
+  *padding-top: 1px
+  *padding-bottom: 1px
+
+textarea,
+select,
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] 
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  -webkit-background-clip: padding
+  -moz-background-clip: padding
+  background-clip: padding-box
+  -webkit-border-radius: 0
+  -moz-border-radius: 0
+  -ms-border-radius: 0
+  -o-border-radius: 0
+  border-radius: 0
+  -webkit-appearance: none
+  background-color: white
+  border: 1px solid
+  border-color: #ddd
+  color: black
+  outline: 0
+  margin: 0
+  padding: 2px 3px
+  text-align: left
+  font-size: 13px
+  height: 1.8em
+  vertical-align: top
+  *padding-top: 2px
+  *padding-bottom: 1px
+  *height: auto
+
+textarea[disabled],
+select[disabled],
+input[type="date"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled],
+input[type="email"][disabled],
+input[type="month"][disabled],
+input[type="number"][disabled],
+input[type="password"][disabled],
+input[type="search"][disabled],
+input[type="tel"][disabled],
+input[type="text"][disabled],
+input[type="time"][disabled],
+input[type="url"][disabled],
+input[type="week"][disabled] 
+  background-color: $glass_md
+
+button[disabled],
+input[disabled],
+select[disabled],
+select[disabled] option,
+select[disabled] optgroup,
+textarea[disabled],
+a.button_disabled 
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+  -moz-user-select: -moz-none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  user-select: none
+  color: $text-tertiary
+  cursor: default
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder 
+  color: $text-tertiary
+
+input:-moz-placeholder,
+textarea:-moz-placeholder 
+  color: $text-tertiary
+
+input.placeholder_text,
+textarea.placeholder_text 
+  color: $text-tertiary
+
+textarea,
+select[size],
+select[multiple] 
+  height: auto
+
+select[size="0"],
+select[size="1"] 
+  height: 1.8em
+  *height: auto
+
+@media (-webkit-min-device-pixel-ratio: 0) 
+  select[size],
+  select[multiple],
+  select[multiple][size] 
+    background-image: none
+    padding-right: 3px
+  
+
+  select,
+  select[size="0"],
+  select[size="1"] 
+    +svg-bg-simple("arrow-down")
+    background-repeat: no-repeat
+    background-position: 90% 50%
+    padding-right: 30px
+    padding-left: 10px
+  
+
+  ::-webkit-validation-bubble-message 
+    -webkit-box-shadow: none
+    box-shadow: none
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, $text-secondary), color-stop(1, black))
+    border: 1px solid
+    border-color: $text-tertiary
+    color: white
+
+    overflow: hidden
+    padding: 15px 15px 17px
+    text-shadow: black 0 0 1px
+    height: 16px
+  
+
+  ::-webkit-validation-bubble-arrow,
+  ::-webkit-validation-bubble-top-outer-arrow,
+  ::-webkit-validation-bubble-top-inner-arrow 
+    -webkit-box-shadow: none
+    box-shadow: none
+    background: $text-secondary
+    border: 0
+  
+
+textarea 
+  min-height: $form-element-height
+  overflow: auto
+  resize: vertical
+  width: 100%
+
+optgroup 
+  color: black
+  font-style: normal
+  font-weight: normal
+
+optgroup::-moz-focus-inner 
+  border: 0
+  padding: 0
+
+.ie6_button,
+* html button,
+* html a.button 
+  background: #dddddd url('../images/button.png?1298351022') repeat-x
+  border: 1px solid
+  border-color: $glass_md
+  cursor: pointer
+  color: $text-primary
+  padding: 2px 10px 0px
+  text-decoration: none
+  overflow: visible
+  vertical-align: top
+  width: auto
+
+* html a.button 
+  position: relative
+  top: 3px
+  padding-bottom: 2px
+
+* html button 
+  padding-top: 1px
+  padding-bottom: 1px
+
+.ie6_input,
+* html textarea,
+* html select 
+  background: white
+  border: 1px solid
+  border-color: $glass_md
+  color: black
+  padding: 2px 3px 1px
+  font-size: 13px
+  vertical-align: top
+
+* html select 
+  margin-top: 1px
+
+.placeholder_text,
+.ie6_input_disabled,
+.ie6_button_disabled 
+  color: $text-tertiary
+
+.ie6_input_disabled 
+  background: $glass_md
+
+#wrapper 
+  margin: 0 auto
+  padding: 20px
+  width: 800px
+
+label.error 
+  background: #ffffcc
+  color: #cc0000
+  font-style: italic
+
+input.error,
+select.error,
+textarea.error 
+  background-color: #ffeeee
+
+.horiz 
+  margin-top: -20px
+  margin-left: -20px
+
+.horiz td 
+  padding: 20px 0 0 20px
+
+
+////////////////////////////////
+.form-type-select
+  display: inline-block
+  @extend %inline-label
+  label
+    @extend %inline-label
+    @extend %large-label
+
+.field-label,
+.field__label
+  +thick
+  
+.container-inline-date > .form-item
+  margin-right: 0

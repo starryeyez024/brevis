@@ -1,0 +1,197 @@
+// Vertical Rhythm:
++establish-baseline
+
+body
+  color: $text-primary
+  //+a11y-contrast($text-primary, $page-color)
+
+//////////////////////////////////////////////////////////////////////////////////
+// HTML elements: Headers
+//////////////////////////////////////////////////////////////////////////////////
+
+h1, .header1
+  @extend %heading1
+  .title-and-tabs &
+    line-height: 1.1
+
+h2, .header2
+  @extend %heading2
+.pane-node-title h2
+  +trailer(0.25)
+
+h3, .header3
+  @extend %heading3
+
+h4, .header4
+  @extend %heading4
+
+h5, .header5
+  @extend %heading5
+
+h6, .header6
+  @extend %heading6
+
+//////////////////////////////////////////////////////////////////////////////////
+// HTML elements: Body Text
+//////////////////////////////////////////////////////////////////////////////////
+
+p, pre
+  margin: 0
+  &+p
+    @include leader(0.6)
+
+strong, b
+  +thick
+
+
+pre, code, tt, samp, kbd, var
+  font-family: Consolas, Monaco, "Courier New", Courier, monospace, sans-serif
+  font-size: 1em
+
+// Contain overflow in all browsers.
+pre 
+  overflow: auto
+
+
+//Address differences between Firefox and other browsers.
+hr 
+  +box-sizing(content-box)
+  height: 0
+  border: none
+  background-color: $border-primary
+
+//////////////////////////////////////////////////////////////////////////////////
+// HTML elements: Links styles
+//////////////////////////////////////////////////////////////////////////////////
+
+a
+  +link
+  &:hover,
+  &:focus
+    h1 &,
+    h2 &,
+    h3 &,
+    h4 &,
+    h5 &,
+    h6 &
+      text-decoration: none
+  &:active,
+  &:hover 
+    outline: 0
+
+// Remove the gray background color from active links in IE 10.
+@if support-legacy-browser(ie, "10") 
+  a 
+    background: transparent
+
+
+blockquote
+  +text-style($color: $primary, $size: 24px)
+  +italic
+  border-left: 2px solid $border-secondary
+  margin: 15px 0
+  padding: 0 25px 0 18px
+  position: relative
+
+  > *:first-child
+    text-indent: 30px
+
+  &:before
+    content: ''
+    display: block
+    width: 18px
+    height: 13px
+    position: absolute
+
+  &:before
+    background: url("#{$base-images}/quote-lft.png") no-repeat top left
+    background-image: url("#{$base-images}/quote-lft.svg")
+    left: 20px
+    top: 7px
+
+  > *:last-child:after
+    content: ''
+    display: inline-block
+    width: 18px
+    height: 13px
+    position: relative
+    background: url("#{$base-images}/quote-rt.png") no-repeat top left
+    background-image: url("#{$base-images}/quote-rt.svg")
+    top: -6px
+    left: 10px
+
+// Address inconsistent and variable font size in all browsers.
+small 
+  font-size: 80%
+
+// Prevent `sub` and `sup` affecting `line-height` in all browsers.
+sub,
+sup 
+  font-size: 75%
+  line-height: 0
+  position: relative
+  vertical-align: baseline
+
+sup 
+  top: -0.5em
+
+sub 
+  bottom: -0.25em
+
+
+// Lists
+
+// Address margins set differently in IE 6/7.
+@if not $strict-normalize or support-legacy-browser(ie, "7") 
+  dl,
+  menu,
+  ol,
+  ul 
+    margin: rhythm(1) 0
+
+  @if not $strict-normalize 
+    ol,
+    ul 
+      ol,
+      ul 
+        margin: 0
+  dd 
+    margin: 0 0 0 $indent-amount
+  menu,
+  ol,
+  ul 
+    padding: 0 0 0 $indent-amount
+  
+
+
+// Correct list images handled incorrectly in IE 7.
+@if support-legacy-browser(ie, "7") 
+  nav ul,
+  nav ol 
+    list-style: none
+    list-style-image: none
+
+
+//Address styling not present in Safari and Chrome.
+dfn 
+  font-style: italic
+
+// Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+abbr[title] 
+  border-bottom: 1px dotted
+
+@if support-legacy-browser(ie, "9") 
+  mark 
+    background: #ff0
+    color: #000
+
+
+//Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+template 
+  display: none 
+
+
+// Address `[hidden]` styling not present in IE 8/9/10.
+@if support-legacy-browser(ie, "10") 
+  [hidden]
+    display: none

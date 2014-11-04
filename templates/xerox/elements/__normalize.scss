@@ -1,0 +1,30 @@
+/* normalize-scss 3.0.1+normalize.3.0.1 | MIT/GPLv2 License | bit.ly/normalize-scss */
+
+
+// Variables and Imports
+//
+// If you have a base partial (or equivalent), you should move these lines to
+// that file. NOTE: Edit the lines to remove "!default".
+// @see http://compass-style.org/help/tutorials/best_practices/
+// =============================================================================
+
+// This variable is a copy of the one used in Compass' support module.
+
+// Optional map of minimum browser versions to support. For example, to
+// remove support for IE 7 and earlier, set $browser-minimum-versions['ie']
+// to '8'.
+$browser-minimum-versions: (
+  'chrome':  null,
+  'firefox': null,
+  'ie':      null,
+  'safari':  null,
+  'opera':   null
+) !default;
+
+// The amount lists and blockquotes are indented.
+$indent-amount: 40px !default;
+$strict-normalize: true !default;
+
+// All components have been moved into appropriate partials
+
+
