@@ -1,0 +1,40 @@
+%sticky-wrapper
+  z-index: map-get($zindex, header)
+  position: relative
+  clear: both
+  +breakpoint($mobile-device)
+    z-index: map-get($zindex, content) !important
+    .panel-region-sticky-menu
+      position: relative !important
+      top: inherit !important
+      
+%sticky-menu
+  float: left !important
+  clear: both !important
+  clear: both !important
+  height: 40px
+  z-index: map-get($zindex, header)
+  width: 100%
+  max-width: 1020px
+  margin: 0 0 0 -20px
+  +breakpoint($mobile-device)
+    margin: 20px 0 0 0
+  .menu .leaf
+    list-style: none
+    display: inline-block
+  .menu
+    padding-top: 9px
+    li
+      margin: 0 6px
+      a
+        padding: 0 5px 4px 7px
+
+
+
+%sticky-menu-anchor
+  display: block
+  position: relative
+  top: -50px
+  visibility: hidden
+  +breakpoint($desktop)
+    top: -170px

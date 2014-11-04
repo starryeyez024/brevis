@@ -1,0 +1,93 @@
+%flexslider-reset
+  +box-shadow(transparent 0 0 0)
+  +border-radius(0)
+  background: transparent
+  margin: 0
+  border: 0
+
+
+%flexslider
+  margin: 0
+  background: #fff
+  border: 0px solid #fff
+  +border-radius(0)
+  +box-shadow(0)
+  width: 100%
+  .slides
+    padding-left: 0em
+    li
+      float: left
+      display: block
+      width: 100%
+    .flex-caption
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0px
+      padding: 10px 16px 0 16px
+
+      div[class*="additional-links"]
+        display: inline-block
+        float: left
+        margin-right: 1em
+        &:after
+          content: "|"
+          margin-left: 1em
+          color: $link
+        &:last-child
+          &:after
+            content: " "
+
+%flex-control-nav
+  position: relative
+  bottom: 30px
+  right: 0px
+  text-align: right
+  z-index: 3
+  float: right
+
+
+%flex-direction-nav
+  .flex-direction-nav
+    //position: relative
+    a, .flex-disabled a
+      margin-top: -20px
+      line-height: 1
+      font-size: 0
+      color: white
+      +border-radius(3px)
+      +breakpoint($desktop)
+        margin-top: -20px
+      &:before,
+      &:after
+        content: ""
+        width: 32px
+        height: 40px
+        background-repeat: no-repeat
+        background-size: 35%
+        background-color: $primary
+        background-position: 50%
+    a.flex-prev
+      left: 5px
+      &:before
+        +svg-bg-simple("arrow-left")
+      
+    a.flex-next
+      right: 5px
+      &:before
+        +svg-bg-simple("arrow-right")
+
+
+
+%flexslider-buttons
+  +hide-text
+  display: block
+  width: 20px
+  height: 20px
+  position: absolute
+  top: 10px
+  z-index: map-get($zindex, content)
+
+
+
+

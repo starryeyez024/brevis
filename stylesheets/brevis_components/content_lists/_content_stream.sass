@@ -1,0 +1,297 @@
+
+%content-stream-node
+  border-bottom: 1px solid $border-tertiary
+  padding-bottom: 1em
+  margin-bottom: 1em
+  margin-right: 1em
+
+%content-stream-image-max
+  +image-pane
+    @extend %img-left
+    width: 100%
+  .field--type-image,
+  .field--type-image a,
+  img
+    width: 100%
+    vertical-align: top //remove unnecessary spacing at the bottom of it's container
+  // target everyting except the taxonomy term tag
+
+  .panel-pane,
+  .embedded_photo
+    float: left
+    margin-bottom: 0
+    h2
+      margin-bottom: 1px
+
+// these are in the variables partial:
+// $content-stream-img-sm: 50%
+// $content-stream-img-md: 58%
+%content-stream-image-sm
+  @extend %content-stream-image-max
+  +teaser-items
+    width: 40%
+    width: calc(100% - #{$content-stream-img-sm} - 20px)
+    float: left
+  +image-pane
+    @extend %img-left
+    max-width: #{$content-stream-img-sm}
+
+
+%content-stream-image-md
+  @extend %content-stream-image-max
+  +breakpoint($smartphone-landscape)
+    +teaser-items
+      width: 40%
+      width: calc(100% - #{$content-stream-img-md} - 20px)
+      float: left
+    +image-pane
+      max-width: #{$content-stream-img-md}
+
+
+%content-stream-image-lg
+  +image-pane
+    width: 100%
+    max-width: 100%
+    .field--type-image,
+    .field--type-image a,
+    img
+      width: 100%
+  h2
+    margin-bottom: 1px
+
+
+%float-thumb-left
+  +clearfix
+  @extend %content-stream-image-sm
+
+
+%full-size-thumb
+  +image-pane
+    +img-no-float
+    max-width: 100%
+    width: 100%
+
+%no-float-thumb
+  @extend %full-size-thumb
+  .pane-node-title,
+  .pane-node-body
+    width: 100%
+    max-width: 100%
+    float: none
+    margin-bottom: 0
+
+%content-stream-basic
+  .views-row
+    float: left
+    width: 100%
+    max-width: 100%
+
+
+@mixin content-stream-1
+  @extend %content-stream-basic
+  .views-row
+    margin-top: 10px
+  .views-row~.views-row
+    @extend %view_row
+
+
+%layout-2
+  +grid-desktop
+  +fluid-grid(2, $padding: 1%)
+
+%layout-3
+  +grid-desktop
+  +fluid-grid(3, $padding: 1.4%)
+
+%layout-4
+  +grid-desktop
+  +fluid-grid(4, $padding: 1%)
+
+%layout-5
+  +grid-desktop
+  +fluid-grid(5, $padding: 1%)
+
+
+%layout-6
+  +grid-desktop
+  +fluid-grid(6, $padding: 1%)
+
+%layout-7
+  +grid-desktop
+  +fluid-grid(7, $padding: 1%)
+
+%layout-8
+  +grid-desktop
+  +fluid-grid(8, $padding: 1%)
+
+
+%layout-1-3
+  .views-row
+    @extend %no-float-thumb
+
+  .views-row-1
+    float: left
+    width: 100% !important
+    max-width: 100%
+    margin-bottom: 0.5em
+    @extend %no-float-thumb
+    +fallback
+      img
+        @extend %lg-thumbnail
+
+  .views-row-2,
+  .views-row-3,
+  .views-row-4
+    width: 32%
+    float: left
+    clear: none
+    .pane-node-title,
+    .pane-node-created,
+    .pane-node-posted-on
+      display: none
+    .field--name-field-cover-photo:after
+      display: none
+    +image-pane
+      img
+        width: 100% !important
+        +fallback
+          @extend %xxs-thumbnail
+
+    .field--type-image
+      width: 100%
+      max-width: 100%
+      #page &
+        img
+          width: 100%
+
+
+  .views-row-2
+    margin-left: 0
+    clear: left
+  .views-row-3
+    margin-left: 2%
+    clear: none
+  .views-row-4
+    margin-left: 2%
+
+@mixin content-stream-1-3
+  @extend %layout-1-3
+
+
+@mixin content-stream-3
+  .views-row
+    //@extend %float-thumb-left
+    @extend %content-stream-basic
+
+  @include pane-eq-md-up
+    @extend %layout-3
+
+  +fallback
+    @extend %layout-3
+
+@mixin content-stream-3-parent
+  .views-row
+    //@extend %float-thumb-left
+    @extend %content-stream-basic
+  @include pane-parent-eq-md-up
+    @extend %layout-3
+  +fallback
+    @extend %layout-3
+
+
+
+@mixin content-stream-4
+  .views-row
+    //@extend %float-thumb-left
+    @extend %content-stream-basic
+
+  &[data-eq-state="pane-sm"]
+    @extend %layout-2
+
+  @include pane-eq-md-up
+    @extend %layout-4
+  +fallback
+    //@extend %layout-4
+
+
+@mixin content-stream-4-parent
+  .views-row
+    //@extend %float-thumb-left
+    @extend %content-stream-basic
+
+  [data-eq-state="pane-sm"] &
+    @extend %layout-2
+
+  @include pane-parent-eq-md-up
+    @extend %layout-4
+
+  +fallback
+    @extend %layout-4
+
+@mixin content-stream-6
+  +grid-desktop
+  +breakpoint($max-tab-p)
+    +fluid-grid(2, $padding: 1%)
+  +breakpoint($tab-p-desk)
+    +fluid-grid(3, $padding: 1%)
+  +breakpoint($desktop)
+    +fluid-grid(6, $padding: 1%)
+
+@mixin content-stream-6-custom
+  +grid-desktop
+  +breakpoint($max-tab-p)
+    +fluid-grid(2, $padding: 1%)
+  +breakpoint($tab-p-desk)
+    +fluid-grid(2, $padding: 1%)
+    .views-row-5, .views-row-6 //Show only 4 items
+      display: none
+    .views-row-4
+      margin-left: 0
+  +breakpoint($desktop)
+    +fluid-grid(6, $padding: 1%)
+
+
+@mixin content-stream-5
+  +grid-desktop
+  +breakpoint($max-tab-p)
+    +fluid-grid(2, $padding: 1%)
+  +breakpoint($tab-p-desk)
+    +fluid-grid(3, $padding: 1%)
+  +breakpoint($desktop)
+    +fluid-grid(5, $padding: 1%)
+
+@mixin content-stream-7
+  [data-eq-state="pane-xl"]
+    @extend %layout-7
+  [data-eq-state="pane-lg"]
+    @extend %layout-6
+  [data-eq-state="pane-md"]
+    @extend %layout-4
+  +pane-container-eq-sm-down
+    @extend %layout-2
+
+
+@mixin content-stream-8
+  [data-eq-state="pane-xl"]
+    @extend %layout-8
+  [data-eq-state="pane-lg"]
+    @extend %layout-6
+  [data-eq-state="pane-md"]
+    @extend %layout-4
+  +pane-container-eq-sm-down
+    @extend %layout-2
+
+
+%latest-content-list-pane
+  .more-link
+    display: inline-block
+  .feed
+    position: absolute
+    left: 10px
+    bottom: 0px
+    a
+      font-size: 0
+
+
+
+
