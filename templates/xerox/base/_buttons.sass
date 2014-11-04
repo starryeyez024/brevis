@@ -12,17 +12,17 @@ button,
 input,
 optgroup,
 select,
-textarea 
+textarea
   color: inherit /* 1 */
   font: inherit /* 2 */
   margin: 0 /* 3 */
-  @if support-legacy-browser(ie, "7") 
+  @if support-legacy-browser(ie, "7")
     *font-family: $primary-font /* 4 */
     *vertical-align: middle /* 5 */
-  
+
 
 // Address `overflow` set to `hidden` in IE 8/9/10/11.
-button 
+button
   overflow: visible
 
 
@@ -31,7 +31,7 @@ button
 // Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
 // Correct `select` style inheritance in Firefox.
 button,
-select 
+select
   text-transform: none
 
 
@@ -43,23 +43,23 @@ select
 // 4. Remove inner spacing in IE 7 without affecting normal text inputs.
 //    Known issue: inner spacing remains in IE 6.
 button,
-html input[type="button"], /* 1 */
+html input[type="button"],
 input[type="reset"],
 input[type="submit"]
-  -webkit-appearance: button /* 2 */
-  cursor: pointer /* 3 */
-  @if support-legacy-browser(ie, "7") 
-    *overflow: visible /* 4 */
+  -webkit-appearance: button
+  cursor: pointer
+  @if support-legacy-browser(ie, "7")
+    *overflow: visible
 
 // Re-set default cursor for disabled elements.
 button[disabled],
-html input[disabled] 
+html input[disabled]
   cursor: default
 
 
 // Remove inner padding and border in Firefox 4+.
 button::-moz-focus-inner,
-input::-moz-focus-inner 
+input::-moz-focus-inner
   border: 0
   padding: 0
 
@@ -68,9 +68,9 @@ input::-moz-focus-inner
 
 @mixin button($bg: $glass_dk, $bg-hover: lighten($bg, 10%), $brdr: $border-tertiary)
   +border-radius(2px)
-  +text-style(12px, $lh: 12px, $color: $primary)
+  +text-style(12px, $lh: 12px, $color: $color-one)
   +inline-block
   padding: 9px
-  
+
 %button
   +button

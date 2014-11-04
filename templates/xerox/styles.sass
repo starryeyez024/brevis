@@ -2,34 +2,45 @@
 // This includes external libraries like compass, toolkit, etc.
 @import "init"
 
-//@import "base_utilities"
-
-// Import sub variables that may override any set in the base theme:
-@import "utilities/**/*"
-
-// Then import base styles:
-//@import "base_components"
-
-// NOTICE!!!!!
-// If you need to add additional Sass Styles, do not add them here!!
+// NOTICE!
+// If you need to add additional Sass Styles, do not add them here!
 // Instead create a new partial in one of the following directories:
-@import "elements/**/*"
-@import "components/**/*"
 
+// ========================================
 
-
-
-// We are importing variables, abstractions, base styles and components
-// using globbing.
+// Base Styles
 //
-// Globbing will always import files alphabetically. Optimally, all your
-// components should be self-contained and explicit enough to not have any
-// contained styles leak into unrelated components: The import order should not
-// affect the result.
+// Basic HTML styling used throughout the site.
 //
-// If there are variables, functions or mixins that depend on each other and
-// therefore need to be imported in a specific order you can import them
-// directly. Variables-, function- or mixin providing partials should never
-// output any styles themselves: Importing them multiple times to resolve
-// dependencies shouldn't be a problem.
+// Styleguide 1.0
+@import "base/_normalize"
+@import "base/buttons"
+@import "base/fieldset"
+@import "base/forms"
+@import "base/lists"
+@import "base/media"
+@import "base/tables"
+@import "base/text"
 
+// Branding
+//
+// Client-Specific Branding such as color, texture, etc
+//
+// Styleguide 2.0
+
+//=================================
+// Components
+@import "components/chrome/header"
+@import "components/chrome/footer"
+@import "components/chrome/page"
+@import "components/chrome/primary_menu"
+
+@import "components/content_fields/tags"
+
+@import "components/content_lists/news"
+
+@import "components/content_modules/flexslider"
+@import "components/content_modules/wysiwyg"
+
+@import "components/content_types/article"
+@import "components/content_types/gallery"
