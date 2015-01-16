@@ -1,0 +1,24 @@
+//*************************************//
+// Basic Colors
+$text-primary: #333333;
+$text-secondary: #666666;
+$text-tertiary: #999999;
+$text-quaternary: #cccccc;
+
+$alert: #cc0000;
+$page-bg: white;
+
+//*************************************//
+$contrasted-dark-default: $text-primary;
+$contrasted-light-default: white;
+
+@mixin color-contrasted($background-color, $dark: $contrasted-dark-default, $light: $contrasted-light-default, $threshold: $contrasted-lightness-threshold) {
+  background-color: $background-color;
+  color: contrast-color($background-color, $dark, $light, $threshold);
+  background: $bg;
+  border: 1px solid $brdr;
+  &:hover,
+  &:focus {
+    background: $bg-hover;
+  }
+}

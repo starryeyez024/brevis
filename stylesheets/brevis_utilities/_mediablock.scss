@@ -1,0 +1,99 @@
+@mixin mediablock {
+  margin: 0 ;
+  @include clearfix;
+}
+
+@mixin media-separator {
+  &::before {
+    content: " ";
+    display: block;
+    height: 8px;
+    width: 100%;
+    border: $cool-gray solid 1px;
+    margin: 0 0 20px 0;
+    background: image-url("bg-diagonal-green.jpg") repeat;
+    opacity: 0.4;
+    @include breakpoint($tablet-portrait) {
+      height: 18px;
+    }
+  }
+}
+
+@mixin mediablock__title {
+  h2, h3, h4 {
+    @include tertiary-font;
+    @include font-size(16px, 1.1);
+    @include caps;
+    margin-top: 0;
+    a {
+      color: $color-two;
+    }
+  }
+}
+
+// Default image, floated to the left
+@mixin mediablock__img {
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 0px;
+  @include breakpoint($tablet-portrait) {
+    margin-right: 45px;
+    margin-bottom: 22px;
+  }
+  &.icon {
+    float: left;
+    margin-right: 1rem;
+  }
+  img {
+    display: block;
+    width: auto;
+  }
+}
+
+// Modifier to keep the text from flowing around the image.
+@mixin mediablock--tight($body: "mediablock__body") {
+  .#{$body} {
+    overflow: auto;
+  }
+}
+
+// Modifier to float media to the right, text on the left
+@mixin mediablock--reversed {
+  .mediablock__img {
+    @include breakpoint($smartphone-landscape) {
+      float: right;
+      margin-right: 0;
+      margin-left: 1em;
+    }
+  }
+}
+
+
+@mixin mediablock-tight-view (
+  $wrapper-name: ".view-content-list",
+  $unit-name: ".views-row",
+  $image-field: ".pane-node-field-shared-image",
+  $title-field: ".pane-node-title, .pane-butler-core-node-title-pane",
+  $body-field: ".pane-node-body") {
+
+  #{$wrapper-name} {
+    clear: both;
+  }
+  #{$unit-name} {
+    @include mediablock;
+  }
+  #{$unit-name} ~ #{$unit-name} {
+   @include media-separator
+  }
+  #{$image-field} {
+    @include mediablock__img;
+  }
+  #{$wrapper-name} #{$title-field}  {
+    @include mediablock__title;
+    overflow: auto;
+  }
+  #{$body-field}  {
+    overflow: auto;
+  }
+}

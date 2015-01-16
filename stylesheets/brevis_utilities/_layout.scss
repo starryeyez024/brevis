@@ -1,0 +1,190 @@
+
+////////////////////////////////////////////////////
+// FLUID GRID COLUMNS  http://sassmeister.com/gist/710eded4e6a323fdfdb6
+///////////////////////////////////////////////////
+$fluid-grid-cols: 1;
+$fluid-grid-grid-rows: 10;
+$fluid-grid-padding: 20px;
+$fluid-grid-class-name: views-row;
+
+@mixin fluid-grid(
+ $cols: $fluid-grid-cols,
+ $grid-rows: $fluid-grid-grid-rows,
+ $padding: $fluid-grid-padding,
+ $class-name: $fluid-grid-class-name
+){
+  .#{$class-name} {
+    width: calc((100% / #{$cols}) + (#{$padding} / #{$cols}));
+    padding: 0 0 $padding $padding;
+  }
+  @for $x from 1 through $grid-rows {
+    .#{$class-name}-#{$x * $cols - ($cols - 1)} {
+      margin-left: -$padding;
+      clear: both;
+    }
+  }
+}
+
+@mixin grid-mobile(
+ $class-name: $fluid-grid-class-name
+){
+  .#{$class-name} {
+    float: left;
+    clear: both;
+    width: 100%;
+    @include box-sizing("border-box");
+  }
+}
+
+@mixin grid-desktop(
+ $class-name: $fluid-grid-class-name
+ ){
+  .#{$class-name} {
+    float: left;
+    clear: none;
+    @include box-sizing("border-box");
+  }
+}
+
+// When using the fluid grid mixin, plug in the following variables:
+// the number of columns
+// the number of rows (if you are unsure guess and add 1 or 2)
+// the padding for the left & right edge of each row
+// and the name of the class for the rows themselves.
+
+// Use the grid-mobile mixin for mobile, and then add a breakpoint
+// and use the grid-desktop mixin for columns 2 and up.
+
+
+
+//======================================
+
+@mixin width-25($padding: 0) {
+  width: 25%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-33($padding: 0) {
+  width: 33.33%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-50($padding: 0) {
+  width: 50%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-66($padding: 0) {
+  width: 66%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-75($padding: 0) {
+  width: 75%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-100($padding: 0) {
+  width: 100%;
+}
+
+@mixin width-50-100($padding: 0) {
+  width: 100%;
+  float: left;
+  padding: $padding;
+  @include breakpoint($tablet-portrait) {
+    width: 50%;
+    float: left;
+    padding: $padding;
+  }
+}
+
+
+@mixin vertical-center(
+  $container-height: 300px,
+  $inner-name: ".block-inner",
+  $inner-width: "80%") {
+  height: $container-height;
+  text-align: center;
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  #{$inner-name} {
+    display: inline-block;
+    vertical-align: middle;
+    width: $inner-width;
+    padding: (100% - $inner-width)/2;
+  }
+}
+
+// Vertical Alignment with Intrinsic ratio which sets the height of the container
+// http://sassmeister.com/gist/bbdf3b09d856138b3989
+@mixin vertical-center-with-ir (
+  $inner-name: ".block-inner",
+  $inner-width: 90%,
+  $container-height: auto,
+  $inner-inner-name: "#{$inner-name}-inner" ){
+  #{$inner-name} {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    width: $inner-width;
+    position: absolute !important;
+    top: 0;
+    left: (100% - $inner-width) / 2;
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      font-size: 0;
+      vertical-align: middle;
+    }
+  }
+  #{$inner-name}-inner {
+    display: inline-block;
+    vertical-align: middle;
+    width: 98%;
+    text-align: center;
+  }
+}
+
+//this allows you to change out the container and internal name.
+
+@mixin vertical-center-with-ir-flex (
+  $inner-name: ".block-inner",
+  $inner-inner:".block-inner",
+  $inner-width: 80%,
+  $container-height: auto)
+  {
+  #{$inner-name} {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    width: $inner-width;
+    position: absolute;
+    top: 0;
+    left: (100% - $inner-width) / 2;
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      font-size: 0;
+      vertical-align: middle;
+    }
+  }
+  #{$inner-inner} {
+    display: inline-block;
+    vertical-align: middle;
+    width: 98%;
+  }
+}

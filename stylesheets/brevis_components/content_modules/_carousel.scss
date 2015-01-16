@@ -1,0 +1,23 @@
+%carousel-layout {
+  @extend %flex-control-nav;
+  .flexslider {
+    * {
+      @include box-sizing(content-box);
+    }
+  }
+  .flex-viewport {
+    width: 100%;
+  }
+  ul.slides {
+    li {
+      padding: 8px 8px 4px 8px;
+      display: block;
+      margin-left: -1px;
+      img {
+        width: 66px;
+        float: left;
+        margin: 0 5px 4px 0;
+      }
+    }
+  }
+}

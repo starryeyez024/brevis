@@ -1,0 +1,417 @@
+//////////////////////////////////////////
+// Component groups
+@mixin headline {
+  .pane-node-field-short-headline,
+  .pane-node-title {
+    @content;
+  }
+}
+
+//things that wrap around a thumbnail
+@mixin teaser-items {
+  .pane-node-field-short-headline,
+  .pane-node-title,
+  .pane-node-created,
+  .pane-node-posted-on,
+  .pane-node-body {
+    @content;
+  }
+}
+
+@mixin image-pane {
+  .pane-node-field-thumbnail,
+  .pane-node-field-cover-photo,
+  .pane-node-field-image,
+  .image-fpp {
+    @content;
+  }
+}
+
+@mixin content-stream-node {
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+
+%content-stream-node {@include content-stream-node;}
+
+@mixin content-stream-image-max {
+  @include image-pane {
+    @extend %img-left;
+    width: 100%;
+  }
+
+  .field--type-image,
+  .field--type-image a,
+  img {
+    width: 100%;
+    vertical-align: top;
+  }
+  // target everyting except the taxonomy term tag
+  .panel-pane,
+  .embedded_photo {
+    float: left;
+    margin-bottom: 0;
+    h2 {
+      margin-bottom: 1px;
+    }
+  }
+}
+
+%content-stream-image-max { @include content-stream-image-max}
+
+// these are in the variables partial:
+// $content-stream-img-sm: 50%
+// $content-stream-img-md: 58%
+@mixin content-stream-image-sm {
+  @include content-stream-image-max;
+  @include teaser-items {
+    width: 40%;
+    width: calc(100% - #{$content-stream-img-sm} - 20px);
+    float: left;
+  }
+
+  @include image-pane {
+    @extend %img-left;
+    max-width: #{$content-stream-img-sm};
+  }
+}
+
+%content-stream-image-sm {@include content-stream-image-sm;}
+
+
+@mixin content-stream-image-md {
+  @include content-stream-image-max;
+  @include breakpoint($smartphone-landscape) {
+    @include teaser-items {
+      width: 40%;
+      width: calc(100% - #{$content-stream-img-md} - 20px);
+      float: left;
+    }
+
+    @include image-pane {
+      max-width: #{$content-stream-img-md};
+    }
+  }
+}
+
+%content-stream-image-md {@include content-stream-image-md;}
+
+@include content-stream-image-lg {
+  @include image-pane {
+    width: 100%;
+    max-width: 100%;
+    .field--type-image,
+    .field--type-image a,
+    img {
+      width: 100%;
+    }
+  }
+
+  h2 {
+    margin-bottom: 1px;
+  }
+}
+
+%content-stream-image-lg {@include content-stream-image-lg;}
+
+%float-thumb-left {
+  @include clearfix;
+  @include content-stream-image-sm;
+}
+
+%full-size-thumb {
+  @include image-pane {
+    @include img-no-float;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+%no-float-thumb {
+  @extend %full-size-thumb;
+  .pane-node-title,
+  .pane-node-body {
+    width: 100%;
+    max-width: 100%;
+    float: none;
+    margin-bottom: 0;
+  }
+}
+
+%content-stream-basic {
+  .views-row {
+    float: left;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@mixin content-stream-1 {
+  @extend %content-stream-basic;
+  .views-row {
+    margin-top: 10px;
+  }
+  .views-row~.views-row {
+    @extend %view_row;
+  }
+}
+
+%layout-2 {
+  @include grid-desktop;
+  @include fluid-grid(2, $padding: 1%);
+}
+
+%layout-3 {
+  @include grid-desktop;
+  @include fluid-grid(3, $padding: 1.4%);
+}
+
+%layout-4 {
+  @include grid-desktop;
+  @include fluid-grid(4, $padding: 1%);
+}
+
+%layout-5 {
+  @include grid-desktop;
+  @include fluid-grid(5, $padding: 1%);
+}
+
+%layout-6 {
+  @include grid-desktop;
+  @include fluid-grid(6, $padding: 1%);
+}
+
+%layout-7 {
+  @include grid-desktop;
+  @include fluid-grid(7, $padding: 1%);
+}
+
+%layout-8 {
+  @include grid-desktop;
+  @include fluid-grid(8, $padding: 1%);
+}
+
+%layout-1-3 {
+  .views-row {
+    @extend %no-float-thumb;
+  }
+  .views-row-1 {
+    float: left;
+    width: 100% !important;
+    max-width: 100%;
+    margin-bottom: 0.5em;
+    @extend %no-float-thumb;
+    @include fallback {
+      img {
+        @extend %lg-thumbnail;
+      }
+    }
+  }
+  .views-row-2,
+  .views-row-3,
+  .views-row-4 {
+    width: 32%;
+    float: left;
+    clear: none;
+    .pane-node-title,
+    .pane-node-created,
+    .pane-node-posted-on {
+      display: none;
+    }
+    .field--name-field-cover-photo:after {
+      display: none;
+    }
+    @include image-pane {
+      img {
+        width: 100% !important;
+        @include fallback {
+          @extend %xxs-thumbnail;
+        }
+      }
+    }
+
+    .field--type-image {
+      width: 100%;
+      max-width: 100%;
+      #page & {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .views-row-2 {
+    margin-left: 0;
+    clear: left;
+  }
+  .views-row-3 {
+    margin-left: 2%;
+    clear: none;
+  }
+  .views-row-4 {
+    margin-left: 2%;
+  }
+}
+
+@mixin content-stream-1-3 {
+  @extend %layout-1-3;
+}
+
+@mixin content-stream-3 {
+  .views-row {
+    //@extend %float-thumb-left
+    @extend %content-stream-basic;
+  }
+  @include pane-eq-md-up {
+    @extend %layout-3;
+  }
+
+  @include fallback {
+    @extend %layout-3;
+  }
+}
+
+@mixin content-stream-3-parent {
+  .views-row {
+    //@extend %float-thumb-left
+    @extend %content-stream-basic;
+  }
+  @include pane-parent-eq-md-up {
+    @extend %layout-3;
+  }
+
+  @include fallback {
+    @extend %layout-3;
+  }
+}
+
+@mixin content-stream-4 {
+  .views-row {
+    //@extend %float-thumb-left
+    @extend %content-stream-basic;
+  }
+  &[data-eq-state="pane-sm"] {
+    @extend %layout-2;
+  }
+  @include pane-eq-md-up {
+    @extend %layout-4;
+  }
+
+  @include fallback {
+    //@extend %layout-4
+  }
+}
+
+@mixin content-stream-4-parent {
+  .views-row {
+    //@extend %float-thumb-left
+    @extend %content-stream-basic;
+  }
+  [data-eq-state="pane-sm"] & {
+    @extend %layout-2;
+  }
+  @include pane-parent-eq-md-up {
+    @extend %layout-4;
+  }
+
+  @include fallback {
+    @extend %layout-4;
+  }
+}
+
+@mixin content-stream-6 {
+  @include grid-desktop;
+  @include breakpoint($max-tab-p) {
+    @include fluid-grid(2, $padding: 1%);
+  }
+
+  @include breakpoint($tab-p-desk) {
+    @include fluid-grid(3, $padding: 1%);
+  }
+
+  @include breakpoint($desktop) {
+    @include fluid-grid(6, $padding: 1%);
+  }
+}
+
+@mixin content-stream-6-custom {
+  @include grid-desktop;
+  @include breakpoint($max-tab-p) {
+    @include fluid-grid(2, $padding: 1%);
+  }
+
+  @include breakpoint($tab-p-desk) {
+    @include fluid-grid(2, $padding: 1%);
+    .views-row-5, .views-row-6 //Show only 4 items {
+      display: none;
+    }
+    .views-row-4 {
+      margin-left: 0;
+    }
+  }
+
+  @include breakpoint($desktop) {
+    @include fluid-grid(6, $padding: 1%);
+  }
+}
+
+@mixin content-stream-5 {
+  @include grid-desktop;
+  @include breakpoint($max-tab-p) {
+    @include fluid-grid(2, $padding: 1%);
+  }
+
+  @include breakpoint($tab-p-desk) {
+    @include fluid-grid(3, $padding: 1%);
+  }
+
+  @include breakpoint($desktop) {
+    @include fluid-grid(5, $padding: 1%);
+  }
+}
+
+@mixin content-stream-7 {
+  [data-eq-state="pane-xl"] {
+    @extend %layout-7;
+  }
+  [data-eq-state="pane-lg"] {
+    @extend %layout-6;
+  }
+  [data-eq-state="pane-md"] {
+    @extend %layout-4;
+  }
+  @include pane-container-eq-sm-down {
+    @extend %layout-2;
+  }
+}
+
+@mixin content-stream-8 {
+  [data-eq-state="pane-xl"] {
+    @extend %layout-8;
+  }
+  [data-eq-state="pane-lg"] {
+    @extend %layout-6;
+  }
+  [data-eq-state="pane-md"] {
+    @extend %layout-4;
+  }
+  @include pane-container-eq-sm-down {
+    @extend %layout-2;
+  }
+}
+
+%latest-content-list-pane {
+  .more-link {
+    display: inline-block;
+  }
+  .feed {
+    position: absolute;
+    left: 10px;
+    bottom: 0px;
+    a {
+      font-size: 0;
+    }
+  }
+}

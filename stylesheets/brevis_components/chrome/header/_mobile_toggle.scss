@@ -1,0 +1,26 @@
+@mixin mobile-menu-toggle {
+  text-indent: -100%;
+  width: $navicon-size - 10px;
+  height: $navicon-size;
+  display: block;
+  margin: 5px;
+  padding-left: $navicon-size;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: $navicon-margin;
+    width: $navicon-size - $navicon-margin * 2;
+    height: $navicon-size - $navicon-margin * 2;
+    background: image-url("hamburger_menu.svg") no-repeat;
+    background-size: cover;
+  }
+  .modal-content & {
+    display: none;
+  }
+}
+
+%mobile-menu-toggle {
+  @include mobile-menu-toggle;
+}

@@ -1,0 +1,39 @@
+//*************************************
+// Animations
+
+@mixin transition {
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+
+// check out https://github.com/at-import/animation-studio
+// for more mixins
+
+@mixin alerted {
+  &:before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    height: 8px;
+    width: 8px;
+    @include border-radius(10px);
+    background-color: gold;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20px;
+    width: 20px;
+    @include border-radius(20px);
+    background-color: transparent;
+    border: solid gold;
+    border-width: 2px;
+    @include box-sizing(border-box);
+    @include animation($name: alertMe);
+  }
+}

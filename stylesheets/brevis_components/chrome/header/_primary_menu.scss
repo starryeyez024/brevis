@@ -1,0 +1,79 @@
+
+@mixin primary_menu (
+  $primary-menu-height: 40px,
+  $primary-menu-padding-v: 5px,
+  $primary-menu-padding-h: 10px
+  ){
+  @include breakpoint($desktop) {
+    position: relative;
+    width: 100%;
+    min-height: $primary-menu-height;
+    .primary-menu-inner {
+      @include horizontal-list;
+      ul.links {
+        padding: 0;
+        margin: 0 - #{$primary-menu-height}/2;
+        overflow: hidden;
+        height: $primary-menu-height;
+      }
+      // Main menubar:
+      .primary-links {
+        li {
+          margin: 0;
+          padding: 0;
+          text-align: center;
+          display: inline-block;
+        }
+        li a {
+          display: block;
+          padding: $primary-menu-padding-v $primary-menu-padding-h;
+          text-decoration: none;
+        }
+        li.first {
+          margin-left: 0;
+          a {
+            padding-left: $primary-menu-padding-h;
+          }
+        }
+        li.last {
+          margin-right: 0;
+          a {
+            padding-right: $primary-menu-padding-h;
+          }
+        }
+      }
+      // Dropdown menu:
+      li > .menu-minipanel-panel {
+        top: $primary-menu-height;
+      }
+    }
+  }
+
+  @include breakpoint($mobile-device) {
+    background: white;
+    .primary-links {
+      border: 1px solid #dddddd;
+    }
+    ul.links {
+      margin: 0 0 0 #{$primary-menu-height} * 1.5;
+      padding: 0;
+      width: auto;
+      list-style: none;
+      .last {
+        a {
+          border-bottom: 0px solid $text-quaternary;
+        }
+      }
+      a {
+        width: 100%;
+        padding: $primary-menu-padding-v;
+        display: inline-block;
+        border-bottom: 1px solid $text-quaternary;
+      }
+    }
+  }
+}
+
+%primary-menu {
+  @include primary-menu;
+}

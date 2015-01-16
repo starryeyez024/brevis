@@ -1,0 +1,364 @@
+////////////////////////////////////////////////
+//      __________
+//     / ____/ __ \
+//    / __/ / / / /
+//   / /___/ /_/ /
+//  /_____/\___\_\
+// Element Queries
+// http://snugug.com/musings/element-queries
+
+// *** See how to use the Element Query mixins! ***
+// ***   http://sassmeister.com/gist/8446194    ***
+
+// for when the data-eq is on the same container
+@mixin eq($state) {
+  &[data-eq-state="#{$state}"] {
+    @content;
+  }
+}
+
+// for when the data-eq is on a nested container
+@mixin eq-container($state) {
+  [data-eq-state="#{$state}"] {
+    @content;
+  }
+}
+
+// for when the data-eq is on a parent container
+@mixin eq-parent($state) {
+  [data-eq-state="#{$state}"] & {
+    @content;
+  }
+}
+
+//data-eq-pts
+//pane: 1
+//pane-xs: 320    $phone-p: 319px
+//pane-sm: 440    $phone-l: 479px
+//pane-md: 600    $tab-p: 639px
+//pane-lg: 720    $tab-l: 769px
+//pane-xl: 840
+//pane-xxl: 960   $desk: 960
+
+// Mixins for the panel pane element queries
+@mixin pane-eq-xs-up {
+  &[data-eq-state="pane-xs"],
+  &[data-eq-state="pane-sm"],
+  &[data-eq-state="pane-md"],
+  &[data-eq-state="pane-lg"],
+  &[data-eq-state="pane-xl"] {
+    @content;
+  }
+}
+
+@mixin pane-eq-sm-up {
+  &[data-eq-state="pane-sm"],
+  &[data-eq-state="pane-md"],
+  &[data-eq-state="pane-lg"],
+  &[data-eq-state="pane-xl"] {
+    @content;
+  }
+}
+
+@mixin pane-eq-md-up {
+  &[data-eq-state="pane-md"],
+  &[data-eq-state="pane-lg"],
+  &[data-eq-state="pane-xl"] {
+    @content;
+  }
+}
+
+@mixin pane-eq-lg-up {
+  &[data-eq-state="pane-lg"],
+  &[data-eq-state="pane-xl"] {
+    @content;
+  }
+}
+
+@mixin pane-eq-xl-up {
+  &[data-eq-state="pane-xl"] {
+    @content;
+  }
+  .lt-ie9 {
+    @content;
+  }
+}
+
+@mixin pane-eq-xs-down {
+  &[data-eq-state="pane-xs"] {
+    @content;
+  }
+}
+
+@mixin pane-eq-sm-down {
+  &[data-eq-state="pane-xs"],
+  &[data-eq-state="pane-sm"] {
+    @content;
+  }
+}
+
+@mixin pane-eq-md-down {
+  &[data-eq-state="pane-xs"],
+  &[data-eq-state="pane-sm"],
+  &[data-eq-state="pane-md"] {
+    @content;
+  }
+}
+
+@mixin pane-eq-lg-down {
+  &[data-eq-state="pane-xs"],
+  &[data-eq-state="pane-sm"],
+  &[data-eq-state="pane-md"],
+  &[data-eq-state="pane-lg"] {
+    @content;
+  }
+}
+
+@mixin pane-eq-xl-down {
+  &[data-eq-state="pane-xs"],
+  &[data-eq-state="pane-sm"],
+  &[data-eq-state="pane-md"],
+  &[data-eq-state="pane-lg"],
+  &[data-eq-state="pane-xl"] {
+    @content;
+  }
+  .lt-ie9 {
+    @content;
+  }
+}
+
+// Mixins for the panel pane element queries
+@mixin pane-container-eq-xs-up {
+  [data-eq-state="pane-xs"],
+  [data-eq-state="pane-sm"],
+  [data-eq-state="pane-md"],
+  [data-eq-state="pane-lg"],
+  [data-eq-state="pane-xl"],
+  [data-eq-state="pane-xxl"] {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-sm-up {
+  [data-eq-state="pane-sm"],
+  [data-eq-state="pane-md"],
+  [data-eq-state="pane-lg"],
+  [data-eq-state="pane-xl"],
+  [data-eq-state="pane-xxl"] {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-md-up {
+  [data-eq-state="pane-md"],
+  [data-eq-state="pane-lg"],
+  [data-eq-state="pane-xl"],
+  [data-eq-state="pane-xxl"] {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-lg-up {
+  [data-eq-state="pane-lg"],
+  [data-eq-state="pane-xl"],
+  [data-eq-state="pane-xxl"] {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-xl-up {
+  [data-eq-state="pane-xl"],
+  [data-eq-state="pane-xxl"] {
+    @content;
+  }
+  .lt-ie9 {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-xxl-up {
+  [data-eq-state="pane-xxl"] {
+    @content;
+  }
+  .lt-ie9 {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-xs-down {
+  [data-eq-state="pane-xs"] {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-sm-down {
+  [data-eq-state="pane-xs"],
+  [data-eq-state="pane-sm"] {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-md-down {
+  [data-eq-state="pane-xs"],
+  [data-eq-state="pane-sm"],
+  [data-eq-state="pane-md"] {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-lg-down {
+  [data-eq-state="pane-xs"],
+  [data-eq-state="pane-sm"],
+  [data-eq-state="pane-md"],
+  [data-eq-state="pane-lg"] {
+    @content;
+  }
+}
+
+@mixin pane-container-eq-xl-down {
+  [data-eq-state="pane-xs"],
+  [data-eq-state="pane-sm"],
+  [data-eq-state="pane-md"],
+  [data-eq-state="pane-lg"],
+  [data-eq-state="pane-xl"] {
+    @content;
+  }
+  .lt-ie9 {
+    @content;
+  }
+}
+
+// Mixins for the panel pane element queries
+@mixin pane-parent-eq-xs-up {
+  [data-eq-state="pane-xs"] &,
+  [data-eq-state="pane-sm"] &,
+  [data-eq-state="pane-md"] &,
+  [data-eq-state="pane-lg"] &,
+  [data-eq-state="pane-xl"] &,
+  [data-eq-state="pane-xxl"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-sm-up {
+  [data-eq-state="pane-sm"] &,
+  [data-eq-state="pane-md"] &,
+  [data-eq-state="pane-lg"] &,
+  [data-eq-state="pane-xl"] &,
+  [data-eq-state="pane-xxl"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-md-up {
+  [data-eq-state="pane-md"] &,
+  [data-eq-state="pane-lg"] &,
+  [data-eq-state="pane-xl"] &,
+  [data-eq-state="pane-xxl"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-lg-up {
+  [data-eq-state="pane-lg"] &,
+  [data-eq-state="pane-xl"] &,
+  [data-eq-state="pane-xxl"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-xl-up {
+  [data-eq-state="pane-xl"] &,
+  [data-eq-state="pane-xxl"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-xxl-up {
+  [data-eq-state="pane-xxl"] & {
+    @content;
+  }
+  .lt-ie9 {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-xs-down {
+  [data-eq-state="pane-xs"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-sm-down {
+  [data-eq-state="pane-xs"] &,
+  [data-eq-state="pane-sm"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-md-down {
+  [data-eq-state="pane-xs"] &,
+  [data-eq-state="pane-sm"] &,
+  [data-eq-state="pane-md"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-lg-down {
+  [data-eq-state="pane-xs"] &,
+  [data-eq-state="pane-sm"] &,
+  [data-eq-state="pane-md"] &,
+  [data-eq-state="pane-lg"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-xl-down {
+  [data-eq-state="pane-xs"] &,
+  [data-eq-state="pane-sm"] &,
+  [data-eq-state="pane-md"] &,
+  [data-eq-state="pane-lg"] &,
+  [data-eq-state="pane-xl"] & {
+    @content;
+  }
+}
+
+@mixin pane-parent-eq-xl-down {
+  [data-eq-state="pane-xs"] &,
+  [data-eq-state="pane-sm"] &,
+  [data-eq-state="pane-md"] &,
+  [data-eq-state="pane-lg"] &,
+  [data-eq-state="pane-xl"] &,
+  [data-eq-state="pane-xxl"] & {
+    @content;
+  }
+  .lt-ie9 {
+    @content;
+  }
+}
+
+@mixin eq-debug {
+  @include eq("xxs") {
+    border: solid 1px purple;
+  }
+
+  @include eq("xs") {
+    border: solid 1px green;
+  }
+
+  @include eq("sm") {
+    border: solid 1px orange;
+  }
+
+  @include eq("md") {
+    border: solid 1px red;
+  }
+
+  @include eq("lg") {
+    border: solid 1px blue;
+  }
+
+  @include eq("xl") {
+    border: solid 1px pink;
+  }
+}

@@ -1,0 +1,44 @@
+@mixin social {
+  ul {
+    margin: 0 0 0 5px;
+    padding: 0;
+  }
+  li {
+    @include inline-block;
+    @include breakpoint($mobile-device) {
+      margin: 0 0 8px;
+    }
+  }
+  li ~li {
+    @include breakpoint($desktop) {
+      margin: 0 0 0 5px;
+    }
+  }
+  a {
+    @include hide-text;
+    @include inline-block;
+    @include border-radius(20px);
+    font-size: 0;
+    width: $header-icon;
+    height: $header-icon;
+    &.facebook {
+      @include svg-bg-simple("facebook");
+    }
+    &.twitter {
+      @include svg-bg-simple("twitter");
+    }
+    &.mail {
+      @include svg-bg-simple("email");
+    }
+    &.more {
+      @include svg-bg-simple("more-social");
+    }
+  }
+  @include breakpoint($print-media) {
+    display: none;
+  }
+}
+
+%social {
+  @include social;
+}

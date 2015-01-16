@@ -1,0 +1,59 @@
+@mixin page-max-width {
+  @include breakpoint($phone-l-tab-p) {
+    max-width: $tab-p;
+    margin: 0 auto;
+  }
+
+  @include breakpoint($tab-p-tab-l) {
+    max-width: $tab-l;
+    margin: 0 auto;
+  }
+
+  @include breakpoint($tab-l-desk) {
+    max-width: $desk;
+    //max-width: $tab-l + 20px
+    margin: 0 auto;
+  }
+
+  @include breakpoint($desktop) {
+    max-width: $desk;
+    margin: 0 auto;
+  }
+
+  @include breakpoint($print-media) {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+@mixin content-area-padding($type: both) {
+  @if $type == left {
+    padding-left: 10px;
+    margin-left: 10px;
+    @include breakpoint($tablet-portrait) {
+      padding-left: 20px;
+      margin-left: 10px;
+    }
+  }
+  @if $type == right {
+    padding-right: 10px;
+    margin-right: 10px;
+    @include breakpoint($tablet-portrait) {
+      padding-right: 20px;
+      margin-right: 10px;
+    }
+  }
+  @if $type == both {
+    padding: 10px;
+    margin: 0 10px;
+    @include breakpoint($tablet-portrait) {
+      padding: 10px 20px;
+      margin: 0 10px;
+    }
+
+    @include breakpoint($desktop) {
+      padding: 20px 20px 0px;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@mixin site-logo {
+  display: block;
+  overflow: hidden;
+  background: no-repeat 0 0;
+  background-size: cover;
+  margin: 0 0 $logo-bottom-margin 0;
+  font-size: 0;
+  line-height: 1;
+  height: $mobile-logo-h;
+  width: $mobile-logo-w;
+  background-image: inline-image("logo_mobile.png");
+  @include breakpoint($mobile-hi-res) {
+    background-image: inline-image("logo_mobile@2x.png");
+  }
+
+  @include breakpoint($desktop) {
+    background-image: inline-image("logo.png");
+    background-size: contain;
+    height: $logo-h;
+    width: $logo-w;
+  }
+
+  @include breakpoint($desk-hi-res) {
+    background-image: inline-image("logo@2x.png");
+  }
+
+  @include breakpoint($print-media) {
+    -webkit-print-color-adjust: exact;
+    content: url("../images/logo.png");
+    background-image: none;
+    height: $logo-h;
+    width: $logo-w;
+  }
+}
+
+
+%site-logo {
+  @include site-logo;
+}

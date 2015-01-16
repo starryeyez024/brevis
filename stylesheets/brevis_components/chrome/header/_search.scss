@@ -1,0 +1,56 @@
+@mixin search {
+  @include breakpoint($print-media) {
+    display: none;
+  }
+
+  &:before {
+    content: " ";
+    width: $header-icon;
+    height: $header-icon;
+    display: block;
+    float: left;
+    background: no-repeat 50%;
+    @include svg-bg-simple("search");
+    @include border-radius(2px);
+    @include breakpoint($mobile-device) {
+      border: 1px solid #999999;
+      content: "D";
+      @include icon-font;
+      font-size: 32px;
+      text-align: center;
+      line-height: 1.35em;
+    }
+
+    @include breakpoint($desktop) {
+      &:before {
+        width: $header-icon-lg;
+        height: $header-icon-lg;
+      }
+      .search-block-form {
+        height: $header-icon-lg;
+      }
+    }
+  }
+  .search-inner {
+    display: none;
+    padding: 0 50px;
+    .search-block-form {
+      background: white;
+      height: $header-icon;
+      max-width: 100%;
+    }
+    input[type="text"] {
+      height: 35px;
+      margin: 5px 1px;
+    }
+    input[type="submit"] {
+      margin: 0;
+      padding: 0 3px;
+      height: 39px;
+    }
+  }
+}
+
+%search {
+  @include search;
+}
