@@ -1,0 +1,28 @@
+//////////////////////////////////////////
+// Component groups
+@mixin headline {
+  .pane-node-field-short-headline,
+  .pane-node-title {
+    @content;
+  }
+}
+
+//things that wrap around a thumbnail
+@mixin teaser-items {
+  .pane-node-field-short-headline,
+  .pane-node-title,
+  .pane-node-created,
+  .pane-node-posted-on,
+  .pane-node-body {
+    @content;
+  }
+}
+
+@mixin image-pane {
+  .pane-node-field-thumbnail,
+  .pane-node-field-cover-photo,
+  .pane-node-field-image,
+  .image-fpp {
+    @content;
+  }
+}

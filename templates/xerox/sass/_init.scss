@@ -1,0 +1,33 @@
+// Import external libraries.
+@import "compass";
+@import "breakpoint";
+@import "brevis";
+@import "singularitygs";
+@import "toolkit";
+
+// Import variables, abstractions, base styles and components using globbing.
+//
+// Globbing will always import files alphabetically. Optimally, all your
+// components should be self-contained and explicit enough to not have any
+// contained styles leak into unrelated components: The import order should not
+// affect the result.
+//
+// If there are variables, functions or mixins that depend on each other and
+// therefore need to be imported in a specific order you can import them
+// directly. Variables-, function- or mixin providing partials should never
+// output any styles themselves: Importing them multiple times to resolve
+// dependencies shouldn't be a problem.
+@import "utilities/breakpoints";
+
+@import "utilities/colors";
+@import "utilities/component_groups";
+@import "utilities/icons";
+@import "utilities/layout";
+@import "utilities/legacy";
+@import "utilities/media";
+@import "utilities/mediablock";
+@import "utilities/transitions";
+@import "utilities/typography";
+@import "utilities/zindex";
+
+@import "utilities/buttons";

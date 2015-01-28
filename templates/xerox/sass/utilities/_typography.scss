@@ -1,0 +1,184 @@
+$base-line-height: 14px;
+$rhythm-unit: "rem"; // Sets rhythm unit to rem. Remove to use default em unit.
+
+// Font Stacks
+$primary-sans: "Arial", sans-serif;
+$primary-serif: "Georgia", "Times" serif;
+$primary-font: $primary-serif;
+$primary-font-heavy: $primary-serif;
+
+$secondary-font: $primary-sans;
+$secondary-font-heavy: $primary-sans;
+
+$icon-font: "icon-webfont";
+
+@mixin primary-font {
+  font-family: $primary-font;
+}
+@mixin primary-font-heavy {
+  font-family: $primary-font-heavy;
+  @include thick;
+}
+
+@mixin secondary-font {
+  font-family: $secondary-font;
+}
+@mixin secondary-font-heavy {
+  font-family: $secondary-font-heavy;
+  @include thick;
+}
+
+@mixin icon-font {
+  font-family: $icon-font;
+}
+
+// **************************************
+// HEADINGS
+
+@mixin heading1 {
+  @include font-size(24px);
+  @include secondary-font;
+  @include caps;
+  margin: 1rem 0 0.4rem;
+  @include thin;
+  color: $color-one;
+  a {
+    @include link($color-one, lighten($color-one, 20%));
+  }
+}
+
+@mixin heading2 {
+  @include font-size(26px);
+  @include secondary-font;
+  @include thick;
+  @include caps;
+  color: $color-one;
+  margin: 0.8rem 0 0.4rem;
+  a {
+    @include link($color-one, lighten($color-one, 20%));
+  }
+}
+
+@mixin heading3 {
+  @include font-size(24px);
+  @include secondary-font;
+  @include thin;
+  color: $color-one;
+  margin: 0.8rem 0 0.4rem;
+  a {
+    @include link($color-one, lighten($color-one, 20%));
+  }
+}
+
+@mixin heading4 {
+  @include font-size(22px, 1.5);
+  @include secondary-font;
+  @include thin;
+  text-transform: none;
+  color: $color-two;
+  margin: 0.7rem 0 0.3rem;
+  a {
+    @include link($color-two, lighten($color-two, 20%));
+  }
+}
+
+@mixin heading5 {
+  @include font-size(20px, 1.5);
+  @include primary-font;
+  @include thin;
+  color: $color-four;
+  margin: 0.6rem 0 0.3rem;
+  a {
+    @include link($color-four, darken($color-four, 20%));
+  }
+}
+
+@mixin heading6 {
+  @include font-size(17px, 1.5);
+  @include primary-font;
+  @include thick;
+  color: $color-four;
+  margin: 0.5rem 0 0.2rem;
+  a {
+    @include link($color-four, darken($color-four, 20%));
+  }
+}
+
+//===== TEXT STYLES TO EXTEND FROM, IN ORDER OF SIZE ==============
+
+// *******   BASIC  ************************** //
+
+@mixin category {
+  @include text-style($size: 30px, $lh: 1.6);
+  @include secondary-font;
+}
+
+@mixin pane-title {
+  @include font-size(26px, 1);
+  @include secondary-font;
+  @include caps;
+  margin: 1rem 0 0.4rem;
+  @include thin;
+  color: $color-one;
+  a {
+    @include link($color-one, lighten($color-one, 20%));
+  }
+}
+
+@mixin primary-headline {
+  @include font-size($size: 44px, $lh: 2);
+  @include primary-font;
+}
+
+@mixin secondary-headline {
+  @include font-size($size: 34px, $lh: 2);
+  @include secondary-font;
+}
+
+
+@mixin author {
+  .term-name {
+    @include thick;
+    @include text-style($size: 14px, $lh: 13px);
+  }
+  .taxonomy-term-description,
+  .field--name-field-twitter {
+    @include text-style($size: 12px, $lh: 11px);
+  }
+}
+
+@mixin small-text {
+  @include text-style($size: 12px, $lh: 16px);
+}
+
+@mixin label {
+  @include thick;
+}
+
+@mixin caption {
+  @include small-text;
+  border-bottom: 1px solid $border-tertiary;
+  padding: 10px;
+}
+
+@mixin date {
+  @include small-text;
+}
+
+@mixin author {
+  @include small-text;
+  @include caps;
+  @include thick;
+}
+
+/// example class created add-font-icon(".icon-googleplus")
+@mixin add-font-icon($iconnamehere){
+    @extend #{$iconnamehere};
+}
+
+@mixin icon-font-control{
+  @include font-size(58px);
+  @include link(white, $pink);
+  @include  font-smoothing;
+  margin: 0 0.25rem;
+}

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>GTRI Webwise Living Styleguide</title>
+	<meta name="description" content="">
+	<meta name="generator" content="kss-node" />
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="public/kss.css">
+  <link rel="stylesheet" href="../../../../libraries/flexslider/flexslider.css">
+  <link rel="stylesheet" href="../css/webwise.styleguide.css">
+  <link rel="stylesheet" href="../css/webwise.styles.css">
+  <link rel="stylesheet" href="../css/classy-panel.styles.css">
+  <link rel="stylesheet" href="../css/webwise.shame.css">
+	<link rel="shortcut icon" href="../ext_icon.gif" />
+	<script src="public/Vendor/Modernizr.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="../js/admissions_tabs_for_styleguide.js"></script>
+	<script src="public/Javascripts/selectize.min.js"></script>
+
+</head>
+<body class="kssBody l-page">
+	<header class="kss___header" role="banner">
+		<a href="#kss___nav" class="kss___header__toggleNav" data-action="toggle" data-axis="x" data-target="#kss___nav">&equiv;</a>
+		<h1><a href="index.html">GTRI Webwise Styleguide <span class="kss_header__pageName"></span></a></h1>
+	</header>
+	<nav class="kss___navWrapper">
+		<ul class="nav nav--stacked kss___nav" id="kss___nav" data-kss-activeMenuIndex="2">
+			<li class="kss___nav__item kss___nav__item--root"><a href="index.html">0.0: Overview</a></li>
+			<li class="kss___nav__item"><a href="section-1.html">1.0: Base HTML</a></li>
+			<li class="kss___nav__item"><a href="section-2.html">2.0: Branding</a></li>
+		</ul>
+		<ul class="nav nav--stacked kss___navSub">
+			<li class="kss___navSub__item"><a href="#block-2.1">
+				<span class="kss___navSub__item__ref">2.1</span><span class="kss___navSub__item__header">Typography</span>
+			</a></li>
+			<li class="kss___navSub__item"><a href="#block-2.5">
+				<span class="kss___navSub__item__ref">2.5</span><span class="kss___navSub__item__header">Primary Buttons</span>
+			</a></li>
+			<li class="kss___navSub__item"><a href="#block-2.7">
+				<span class="kss___navSub__item__ref">2.7</span><span class="kss___navSub__item__header">Classy Panel Styles: Text Styles</span>
+			</a></li>
+		</ul>
+	</nav>
+	<div class="kss___siteWrapper">
+		<main class="kss___contentWrapper" role="main">
+
+			<h1 class="kss-title" id="block-2">
+				<a class="kss-title__refLink" href="#block-2">#</a>
+				<span class="kss-ref">2.0</span> - <span class="kss-header">Branding</span>
+			</h1>
+				<p>Client-Specific Branding such as color, texture, typography, etc.</p>
+
+				 			<section class="kss-depth-2" id="block-2.1">
+				<h1 class="kss-title">
+					<a class="kss-title__refLink" href="#block-2.1">#</a>
+					<span class="kss-ref">2.1</span> - Typography
+				</h1>
+				<div class="kss-box"></div>
+				<div class="kss-styleguideSection">
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading">Default</div>
+						<h2 class="Sentinel-Medium">Primary Font: Georgia </h2>
+<h2 class="Liberator-Heavy">Secondary Font Heavy: Liberator-Heavy</h2>
+<h2 class="Liberator-Medium">Secondary Font: Liberator-Medium</h2>
+<h2 class="Liberator-Light">Secondary Font Light: Liberator-Light</h2>
+<h2 class="SackersGothicStd-Medium">Tertiary Font: SackersGothicStd-Medium</h2>
+					</div>
+				</div>
+				<div class="kss-markup">
+					<pre class="prettyprint lang-html linenums" data-language="html">&lt;h2 class=&quot;Sentinel-Medium&quot;&gt;Primary Font: Georgia &lt;/h2&gt;
+&lt;h2 class=&quot;Liberator-Heavy&quot;&gt;Secondary Font Heavy: Liberator-Heavy&lt;/h2&gt;
+&lt;h2 class=&quot;Liberator-Medium&quot;&gt;Secondary Font: Liberator-Medium&lt;/h2&gt;
+&lt;h2 class=&quot;Liberator-Light&quot;&gt;Secondary Font Light: Liberator-Light&lt;/h2&gt;
+&lt;h2 class=&quot;SackersGothicStd-Medium&quot;&gt;Tertiary Font: SackersGothicStd-Medium&lt;/h2&gt;</pre>
+				</div>
+				
+			</section>
+			<section class="kss-depth-2" id="block-2.5">
+				<h1 class="kss-title">
+					<a class="kss-title__refLink" href="#block-2.5">#</a>
+					<span class="kss-ref">2.5</span> - Primary Buttons
+				</h1>
+				<div class="kss-box"><p>Most button use cases should use one of the modifier classes below.
+Both &#39;button-primary&#39; and &#39;button-primar--modifier&#39; doesn&#39;t need to
+be added to the markup. Adding only the modifier class works fine.</p>
+
+					<table class="kss-box__modifierTable table">
+						<thead>
+							<tr>
+								<th colspan="2">Available modifiers</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="kss-box__modifierTable__modifierName"><pre>.button-primary--one</pre></td>
+								<td><p>Button Primary: color one</p>
+</td>
+							</tr>
+							<tr>
+								<td class="kss-box__modifierTable__modifierName"><pre>.button-primary--two</pre></td>
+								<td><p>Button Primary: color two</p>
+</td>
+							</tr>
+							<tr>
+								<td class="kss-box__modifierTable__modifierName"><pre>.button-primary--three</pre></td>
+								<td><p>Button Primary: color three</p>
+</td>
+							</tr>
+							<tr>
+								<td class="kss-box__modifierTable__modifierName"><pre>.button-primary--four</pre></td>
+								<td><p>Button Primary: color four</p>
+</td>
+							</tr>
+							<tr>
+								<td class="kss-box__modifierTable__modifierName"><pre>.button-secondary</pre></td>
+								<td><p>Button Secondary</p>
+</td>
+							</tr>
+							<tr>
+								<td class="kss-box__modifierTable__modifierName"><pre>.button--large</pre></td>
+								<td><p>Larger button alternative</p>
+</td>
+							</tr>
+						</tbody>
+					</table></div>
+				<div class="kss-styleguideSection">
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading">Default</div>
+						<button class=" {$modifiers}">HTML Button element</button>
+<br>
+<p><a class=" {$modifiers}" href="#">Link with a button class</a></p>
+					</div>
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading"><p>Button Primary: color one</p>
+</div>
+						<div class="kss-styleguideElement__class">.button-primary--one</div>
+						<button class=" button-primary--one">HTML Button element</button>
+<br>
+<p><a class=" button-primary--one" href="#">Link with a button class</a></p>
+					</div>
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading"><p>Button Primary: color two</p>
+</div>
+						<div class="kss-styleguideElement__class">.button-primary--two</div>
+						<button class=" button-primary--two">HTML Button element</button>
+<br>
+<p><a class=" button-primary--two" href="#">Link with a button class</a></p>
+					</div>
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading"><p>Button Primary: color three</p>
+</div>
+						<div class="kss-styleguideElement__class">.button-primary--three</div>
+						<button class=" button-primary--three">HTML Button element</button>
+<br>
+<p><a class=" button-primary--three" href="#">Link with a button class</a></p>
+					</div>
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading"><p>Button Primary: color four</p>
+</div>
+						<div class="kss-styleguideElement__class">.button-primary--four</div>
+						<button class=" button-primary--four">HTML Button element</button>
+<br>
+<p><a class=" button-primary--four" href="#">Link with a button class</a></p>
+					</div>
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading"><p>Button Secondary</p>
+</div>
+						<div class="kss-styleguideElement__class">.button-secondary</div>
+						<button class=" button-secondary">HTML Button element</button>
+<br>
+<p><a class=" button-secondary" href="#">Link with a button class</a></p>
+					</div>
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading"><p>Larger button alternative</p>
+</div>
+						<div class="kss-styleguideElement__class">.button--large</div>
+						<button class=" button--large">HTML Button element</button>
+<br>
+<p><a class=" button--large" href="#">Link with a button class</a></p>
+					</div>
+				</div>
+				<div class="kss-markup">
+					<pre class="prettyprint lang-html linenums" data-language="html">&lt;button class=&quot; {$modifiers}&quot;&gt;HTML Button element&lt;/button&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;a class=&quot; {$modifiers}&quot; href=&quot;#&quot;&gt;Link with a button class&lt;/a&gt;&lt;/p&gt;</pre>
+				</div>
+				
+			</section>
+			<section class="kss-depth-2" id="block-2.7">
+				<h1 class="kss-title">
+					<a class="kss-title__refLink" href="#block-2.7">#</a>
+					<span class="kss-ref">2.7</span> - Classy Panel Styles: Text Styles
+				</h1>
+				<div class="kss-box">
+					<table class="kss-box__modifierTable table">
+						<thead>
+							<tr>
+								<th colspan="2">Available modifiers</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class="kss-box__modifierTable__modifierName"><pre>.text-white</pre></td>
+								<td><p>Turn all text white</p>
+</td>
+							</tr>
+							<tr>
+								<td class="kss-box__modifierTable__modifierName"><pre>.text-navy</pre></td>
+								<td><p>Turn all text Butler blue</p>
+</td>
+							</tr>
+						</tbody>
+					</table></div>
+				<div class="kss-styleguideSection">
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading">Default</div>
+						<div class="panel-pane {$modifiers}" style="background:#ddd;margin-bottom: 10px;padding: 10px;">
+ <h1>First-Level Header; <a href="#">Any header elements may include links.</a></h1>
+ <p>The main header above is an <code>h1</code> element. </h1>
+ <h2 id="sections">Second-Level Header; <a href="#">Any header elements may include links.</a></h2>
+ <p>The secondary header above is an <code>h2</code> element, which may be used for any form of important page-level header. More than one may be used per page. Consider using an <code>h2</code> unless you need a header level of less importance, or as a sub-header to an existing <code>h2</code> element.</p>
+ <h3>Third-Level Header; <a href="#">Any header elements may include links.</a></h3>
+ <p>The header above is an <code>h3</code> element, which may be used for any form of page-level header which falls below the <code>h2</code> header in a document hierarchy.</p>
+ <h4>Fourth-Level Header; <a href="#">Any header elements may include links.</a></h4>
+ <p>The header above is an <code>h4</code> element, which may be used for any form of page-level header which falls below the <code>h3</code> header in a document hierarchy.</p>
+ <h5>Fifth-Level Header; <a href="#">Any header elements may include links.</a></h5>
+ <p>The header above is an <code>h5</code> element, which may be used for any form of page-level header which falls below the <code>h4</code> header in a document hierarchy.</p>
+ <h6>Sixth-Level Header; <a href="#">Any header elements may include links.</a></h6>
+ <p>The header above is an <code>h6</code> element, which may be used for any form of page-level header which falls below the <code>h5</code> header in a document hierarchy.</p>
+</div>
+					</div>
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading"><p>Turn all text white</p>
+</div>
+						<div class="kss-styleguideElement__class">.text-white</div>
+						<div class="panel-pane text-white" style="background:#ddd;margin-bottom: 10px;padding: 10px;">
+ <h1>First-Level Header; <a href="#">Any header elements may include links.</a></h1>
+ <p>The main header above is an <code>h1</code> element. </h1>
+ <h2 id="sections">Second-Level Header; <a href="#">Any header elements may include links.</a></h2>
+ <p>The secondary header above is an <code>h2</code> element, which may be used for any form of important page-level header. More than one may be used per page. Consider using an <code>h2</code> unless you need a header level of less importance, or as a sub-header to an existing <code>h2</code> element.</p>
+ <h3>Third-Level Header; <a href="#">Any header elements may include links.</a></h3>
+ <p>The header above is an <code>h3</code> element, which may be used for any form of page-level header which falls below the <code>h2</code> header in a document hierarchy.</p>
+ <h4>Fourth-Level Header; <a href="#">Any header elements may include links.</a></h4>
+ <p>The header above is an <code>h4</code> element, which may be used for any form of page-level header which falls below the <code>h3</code> header in a document hierarchy.</p>
+ <h5>Fifth-Level Header; <a href="#">Any header elements may include links.</a></h5>
+ <p>The header above is an <code>h5</code> element, which may be used for any form of page-level header which falls below the <code>h4</code> header in a document hierarchy.</p>
+ <h6>Sixth-Level Header; <a href="#">Any header elements may include links.</a></h6>
+ <p>The header above is an <code>h6</code> element, which may be used for any form of page-level header which falls below the <code>h5</code> header in a document hierarchy.</p>
+</div>
+					</div>
+					<div class="kss-styleguideElement cf" id="page">
+						<div class="kss-styleguideElement__heading"><p>Turn all text Butler blue</p>
+</div>
+						<div class="kss-styleguideElement__class">.text-navy</div>
+						<div class="panel-pane text-navy" style="background:#ddd;margin-bottom: 10px;padding: 10px;">
+ <h1>First-Level Header; <a href="#">Any header elements may include links.</a></h1>
+ <p>The main header above is an <code>h1</code> element. </h1>
+ <h2 id="sections">Second-Level Header; <a href="#">Any header elements may include links.</a></h2>
+ <p>The secondary header above is an <code>h2</code> element, which may be used for any form of important page-level header. More than one may be used per page. Consider using an <code>h2</code> unless you need a header level of less importance, or as a sub-header to an existing <code>h2</code> element.</p>
+ <h3>Third-Level Header; <a href="#">Any header elements may include links.</a></h3>
+ <p>The header above is an <code>h3</code> element, which may be used for any form of page-level header which falls below the <code>h2</code> header in a document hierarchy.</p>
+ <h4>Fourth-Level Header; <a href="#">Any header elements may include links.</a></h4>
+ <p>The header above is an <code>h4</code> element, which may be used for any form of page-level header which falls below the <code>h3</code> header in a document hierarchy.</p>
+ <h5>Fifth-Level Header; <a href="#">Any header elements may include links.</a></h5>
+ <p>The header above is an <code>h5</code> element, which may be used for any form of page-level header which falls below the <code>h4</code> header in a document hierarchy.</p>
+ <h6>Sixth-Level Header; <a href="#">Any header elements may include links.</a></h6>
+ <p>The header above is an <code>h6</code> element, which may be used for any form of page-level header which falls below the <code>h5</code> header in a document hierarchy.</p>
+</div>
+					</div>
+				</div>
+				<div class="kss-markup">
+					<pre class="prettyprint lang-html linenums" data-language="html">&lt;div class=&quot;panel-pane {$modifiers}&quot; style=&quot;background:#ddd;margin-bottom: 10px;padding: 10px;&quot;&gt;
+ &lt;h1&gt;First-Level Header; &lt;a href=&quot;#&quot;&gt;Any header elements may include links.&lt;/a&gt;&lt;/h1&gt;
+ &lt;p&gt;The main header above is an &lt;code&gt;h1&lt;/code&gt; element. &lt;/h1&gt;
+ &lt;h2 id=&quot;sections&quot;&gt;Second-Level Header; &lt;a href=&quot;#&quot;&gt;Any header elements may include links.&lt;/a&gt;&lt;/h2&gt;
+ &lt;p&gt;The secondary header above is an &lt;code&gt;h2&lt;/code&gt; element, which may be used for any form of important page-level header. More than one may be used per page. Consider using an &lt;code&gt;h2&lt;/code&gt; unless you need a header level of less importance, or as a sub-header to an existing &lt;code&gt;h2&lt;/code&gt; element.&lt;/p&gt;
+ &lt;h3&gt;Third-Level Header; &lt;a href=&quot;#&quot;&gt;Any header elements may include links.&lt;/a&gt;&lt;/h3&gt;
+ &lt;p&gt;The header above is an &lt;code&gt;h3&lt;/code&gt; element, which may be used for any form of page-level header which falls below the &lt;code&gt;h2&lt;/code&gt; header in a document hierarchy.&lt;/p&gt;
+ &lt;h4&gt;Fourth-Level Header; &lt;a href=&quot;#&quot;&gt;Any header elements may include links.&lt;/a&gt;&lt;/h4&gt;
+ &lt;p&gt;The header above is an &lt;code&gt;h4&lt;/code&gt; element, which may be used for any form of page-level header which falls below the &lt;code&gt;h3&lt;/code&gt; header in a document hierarchy.&lt;/p&gt;
+ &lt;h5&gt;Fifth-Level Header; &lt;a href=&quot;#&quot;&gt;Any header elements may include links.&lt;/a&gt;&lt;/h5&gt;
+ &lt;p&gt;The header above is an &lt;code&gt;h5&lt;/code&gt; element, which may be used for any form of page-level header which falls below the &lt;code&gt;h4&lt;/code&gt; header in a document hierarchy.&lt;/p&gt;
+ &lt;h6&gt;Sixth-Level Header; &lt;a href=&quot;#&quot;&gt;Any header elements may include links.&lt;/a&gt;&lt;/h6&gt;
+ &lt;p&gt;The header above is an &lt;code&gt;h6&lt;/code&gt; element, which may be used for any form of page-level header which falls below the &lt;code&gt;h5&lt;/code&gt; header in a document hierarchy.&lt;/p&gt;
+&lt;/div&gt;</pre>
+				</div>
+				
+			</section>
+		</main>
+		<footer class="kss___footer" role="contentinfo">
+			This styleguide is based on the <a href="https://github.com/Inkdpixels/kss-node_glacier" target="_blank">kss-node_glacier</a> template.
+		</footer>
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="public/Vendor/Rainbow.min.js"></script>
+	<script src="public/Javascripts/GenerateStateRules.js"></script>
+	<script src="public/Javascripts/Styleguide.js"></script>
+
+</body>
+</html>

@@ -1,4 +1,6 @@
-@mixin site-logo {
+@mixin site-logo (
+  $logoname: "logo",
+  $logoname-mobile: "logo-mobile") {
   display: block;
   overflow: hidden;
   background: no-repeat 0 0;
@@ -8,20 +10,20 @@
   line-height: 1;
   height: $mobile-logo-h;
   width: $mobile-logo-w;
-  background-image: inline-image("logo_mobile.png");
+  background-image: inline-image("#{logoname-mobile}.png");
   @include breakpoint($mobile-hi-res) {
-    background-image: inline-image("logo_mobile@2x.png");
+    background-image: inline-image("#{logoname-mobile}@2x.png");
   }
 
   @include breakpoint($desktop) {
-    background-image: inline-image("logo.png");
+    background-image: inline-image("#{logoname}.png");
     background-size: contain;
     height: $logo-h;
     width: $logo-w;
   }
 
   @include breakpoint($desk-hi-res) {
-    background-image: inline-image("logo@2x.png");
+    background-image: inline-image("#{logoname}@2x.png");
   }
 
   @include breakpoint($print-media) {
@@ -31,9 +33,4 @@
     height: $logo-h;
     width: $logo-w;
   }
-}
-
-
-%site-logo {
-  @include site-logo;
 }

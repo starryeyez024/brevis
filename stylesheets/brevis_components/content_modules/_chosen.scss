@@ -1,4 +1,4 @@
-%chosen-container {
+@mixin chosen-container {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -37,7 +37,7 @@
   }
 }
 
-%chosen-single-chosen {
+@mixin chosen-single-chosen {
   .chosen-single {
     position: relative;
     display: block;
@@ -124,7 +124,7 @@
   }
 }
 
-%chosen-results {
+@mixin chosen-results {
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
@@ -165,7 +165,7 @@
   }
 }
 
-%chosen-multi-chosen {
+@mixin chosen-multi-chosen {
   .chosen-choices {
     position: relative;
     overflow: hidden;
@@ -230,7 +230,7 @@
   }
 }
 
-%chosen-active {
+@mixin chosen-active {
   &.chosen-with-drop {
     .chosen-single {
       border: 1px solid #aaaaaa;
@@ -249,7 +249,7 @@
   }
 }
 
-%chosen-disabled-support {
+@mixin chosen-disabled-support {
   .chosen-disabled {
     opacity: 0.5 !important;
     cursor: default;
@@ -262,7 +262,7 @@
   }
 }
 
-%chosen-rtl {
+@mixin chosen-rtl {
   .chosen-rtl {
     text-align: right;
     .chosen-single {

@@ -1,0 +1,84 @@
+@import "init";
+
+// Branding
+//
+// Client-Specific Branding such as color, texture, typography, etc.
+//
+// Styleguide 2.0
+
+// Typography
+//
+// Markup:
+// <h2 class="Sentinel-Medium">Primary Font: Georgia </h2>
+// <h2 class="Liberator-Heavy">Secondary Font Heavy: Liberator-Heavy</h2>
+// <h2 class="Liberator-Medium">Secondary Font: Liberator-Medium</h2>
+// <h2 class="Liberator-Light">Secondary Font Light: Liberator-Light</h2>
+// <h2 class="SackersGothicStd-Medium">Tertiary Font: SackersGothicStd-Medium</h2>
+//
+// Styleguide 2.1
+
+
+
+/// example class created .icon-googleplus
+@each $fonticon, $iconname in $fonticons {
+  %icon-#{$fonticon} {
+    @include icon-font;
+    content: "#{$iconname}";
+  }
+}
+
+
+// Media block / Views Content List
+//
+// Reusable classes used to float an image beside content
+// on one side or another. Based off of
+// http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+//
+// .mediablock--tight - Keep the text from flowing around the image.
+// .mediablock--reversed - Float media to the right, text on the left.
+//
+// Markup:
+// <div class="mediablock {$modifiers}">
+//   <div class="mediablock__img">
+//     <a href="#">
+//       <img src="http://placehold.it/90x90" width="90" height="90">
+//     </a>
+//   </div>
+//   <div class="mediablock__body">
+//     <h2><a href="#">This is a test title</a></h2>
+//     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+//       scelerisque tempus sapien vitae sagittis. Nulla tincidunt viverra libero,
+//       viverra libero, ac commodo nulla semper sed. Curabitur dapibus
+//       ac commodo nulla semper sed. Sed ac fringilla ipsum, semper posuere augue.
+//       Praesent vel quam non erat ultrices sodales eu sed metus. Nulla tincidunt
+//       viverra libero, ac commodo nulla semper sed. Curabitur dapibus
+//       lacus a nunc ullamcorper, vitae sodales nibh gravida. Phasellus venenatis at
+//       scelerisque tempus sapien vitae sagittis. Nulla tincidunt viverra libero,
+//       nisl ac blandit. Curabitur iaculis nisi id consequat dictum.
+//     </p>
+//   </div>
+// </div>
+//
+// Styleguide 4.5
+
+.mediablock {
+  @include mediablock;
+}
+
+.mediablock__title {
+  @include mediablock__title;
+}
+
+// Default image, floated to the left
+.mediablock__img {
+  @include mediablock__img;
+}
+
+.mediablock--tight {
+  @include mediablock--tight;
+}
+
+// Modifier to float media to the right, text on the left
+.mediablock--reversed {
+  @include mediablock--reversed;
+}

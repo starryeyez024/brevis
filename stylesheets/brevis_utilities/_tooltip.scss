@@ -1,11 +1,14 @@
-@mixin hui_tooltip($content: attr(data-tooltip), $direction: top) {
+@mixin hui_tooltip(
+  $content: attr(data-tooltip),
+  $direction: top) {
   position: relative;
   &:before, &:after {
     display: none;
     z-index: 98;
   }
   &:hover {
-    &:after  // for text bubble {
+    // for text bubble
+    &:after {
       content: $content;
       display: block;
       position: absolute;

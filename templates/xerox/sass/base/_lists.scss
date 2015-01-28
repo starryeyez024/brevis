@@ -1,0 +1,49 @@
+// //////////////////////////////////////////////////////////////////////////////////
+// // HTML elements: List styles
+// //////////////////////////////////////////////////////////////////////////////////
+
+
+ul.menu li.leaf,
+ul li.leaf {
+  list-style-image: none;
+}
+
+body ul.menu,
+ul {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+    .field--name-body & {
+      list-style: disc;
+    }
+    li {
+      .field--name-body & {
+        list-style: circle;
+      }
+    }
+  }
+  .collapsed,
+  .expanded {
+    list-style: none;
+    list-style-image: none;
+  }
+}
+
+.view ul li {
+  list-style: none;
+}
+
+.bullets {
+  padding: 0 0 0 20px;
+  li {
+    list-style: disc;
+  }
+}
+.cke_editable,
+.field--name-body,
+.field--type-text-long {
+  ul {
+    @extend .bullets;
+  }
+}

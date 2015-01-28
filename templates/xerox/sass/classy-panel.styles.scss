@@ -1,0 +1,38 @@
+// Classy panel styles is separate because it's loaded in the
+// WYSIWYG and Panels Editor
+
+@import "init";
+
+// Fonts
+
+//@each $family in
+//"example"  {
+//  @font-face {
+//    font-family: #{$family};
+//    src: url('../fonts/#{$family}.eot');
+//    src: url('../fonts/#{$family}.eot?#iefix') format('embedded-opentype'),
+//         url('../fonts/#{$family}.woff') format('woff'),
+//         url('../fonts/#{$family}.ttf') format('truetype'),
+//         url('../fonts/#{$family}.svg##{$family}') format('svg');
+//    font-weight: 100;
+//  }
+//}
+
+$breakpoint-no-queries: false;
+$breakpoint-no-query-fallbacks: ".lt-ie9" !global;
+
+@import "base/_normalize";
+@import "base/buttons";
+@import "base/fieldset";
+@import "base/forms";
+@import "base/lists";
+@import "base/media";
+@import "base/selectize";
+@import "base/tables";
+@import "base/text";
+
+
+@import "components/cta_blocks";
+
+
+/*# sourceMappingURL=classy-panel.styles.css.map */

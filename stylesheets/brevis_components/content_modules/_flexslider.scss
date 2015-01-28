@@ -1,4 +1,4 @@
-%flexslider-reset {
+@mixin flexslider-reset {
   @include box-shadow(transparent 0 0 0);
   @include border-radius(0);
   background: transparent;
@@ -6,7 +6,7 @@
   border: 0;
 }
 
-%flexslider {
+@mixin flexslider {
   margin: 0;
   background: white;
   border: 0px solid white;
@@ -92,7 +92,7 @@
   }
 }
 
-%flexslider-buttons {
+@mixin flexslider-buttons {
   @include hide-text;
   display: block;
   width: 20px;

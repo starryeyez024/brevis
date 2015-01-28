@@ -1,4 +1,4 @@
-# Styleguide
+# Xerox Styleguide
 
 This application is a living styleguide, generated from KSS documented styles.
 

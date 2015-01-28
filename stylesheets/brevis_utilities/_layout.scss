@@ -188,3 +188,135 @@ $fluid-grid-class-name: views-row;
     width: 98%;
   }
 }
+
+@mixin equal-height{
+  .region-inner{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// Panel region layouts, used best with Classy Panel Styles
+
+$spacing: 15px;
+$spacing-double: $spacing * 2;
+$spacing-triple: $spacing * 3;
+$content-max-width: 1000px;
+
+@mixin content-max-width {
+  max-width: $content-max-width;
+  margin: 0 auto;
+}
+
+// To make hero styles work with IPE:
+// Use in @include panel-pane-with-ipe place of .panel-pane
+@mixin panel-pane-with-ipe {
+  .main-layout-pane {
+    @content;
+  }
+  .panels-ipe-portlet-wrapper {
+    @content;
+    .main-layout-pane {
+      width: 100% !important;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+// To make hero styles work with IPE:
+// Use in @include panel-pane-with-ipe place of .panel-pane
+@mixin panel-pane-ipe-compound {
+  &.main-layout-pane {
+    @content;
+  }
+  &.panels-ipe-portlet-wrapper {
+    @content;
+    .main-layout-pane {
+      width: 100% !important;
+      margin: 0;
+      border: 0;
+      padding: 0;
+      //padding: 0 !important;
+    }
+  }
+}
+
+@mixin panel-pane($nth: null) {
+  @if ($nth) {
+    .main-layout-pane:nth-child(#{$nth}),
+    .panels-ipe-portlet-wrapper:nth-child(#{$nth}) .main-layout-pane {
+      @content;
+    }
+  }
+  @else {
+    .main-layout-pane,
+    .panels-ipe-portlet-wrapper .main-layout-pane {
+      @content;
+    }
+  }
+}
+//////////////////////////////////////////////////////////////////
+// REGION COLUMN LAYOUT MIXINS
+// These styles only account for left & right margins between panes
+@mixin region-1col {
+  clear: both;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  @include breakpoint(max-width $tab-l) {
+    @include panel-pane-ipe-compound {
+      &[class*='cta-primary'],
+      &[class*='cta-secondary'] {
+        max-width: 450px;
+      }
+    }
+  }
+}
+@mixin region-col($cols: 3, $space: $spacing, $offset: null, $margin-direction: right, $rows: 3) {
+  margin-#{$margin-direction}: $spacing;
+  clear: none;
+  max-width: 100%;
+  $minus-margins: ceil($space * (($cols - 1) / $cols)) + 1px;
+
+  @if $margin-direction == "right" {
+    float: left;
+  }
+  @if $margin-direction == "left" {
+    float: right;
+  }
+
+  @if $offset {
+    &:nth-child(n+#{$offset + 1}) {
+      width: calc( (100% / #{$cols}) - #{$minus-margins});
+    }
+    &:nth-child(#{$cols + $offset}),
+    &:nth-child(#{$cols * 2 + $offset}),
+    &:nth-child(#{$cols * 3 + $offset}) {
+      margin-#{$margin-direction}: 0;
+    }
+    &:nth-child(#{$cols + 1 + $offset}),
+    &:nth-child(#{$cols * 2 + 1 + $offset}),
+    &:nth-child(#{$cols * 3 + 1 + $offset}) {
+      clear: left;
+    }
+  }
+  @else {
+    width: calc( (100% / #{$cols}) - #{$minus-margins});
+
+    &:nth-child(#{$cols}),
+    &:nth-child(#{$cols * 2}),
+    &:nth-child(#{$cols * 3}) {
+      margin-#{$margin-direction}: 0;
+    }
+    &:nth-child(#{$cols + 1}),
+    &:nth-child(#{$cols * 2 + 1}),
+    &:nth-child(#{$cols * 3 + 1}), {
+      clear: left;
+    }
+  }
+}

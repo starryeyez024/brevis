@@ -1,89 +1,64 @@
-// Branding: Colors
-//
-// Colors used throughout the theme.
-//
-// Markup:
-// <div class="clearfix">
-//  <div class="color-block color-one"></div>
-//  <div class="color-block color-two"></div>
-//  <div class="color-block color-three"></div>
-//  <div class="color-block color-four"></div>
-//  <div class="color-block color-five"></div>
-//  <div class="color-block color-six"></div>
-// </div>
-//
-// Styleguide 2.1
-
-
 // Branding Colors:
-// These colors are listed only for reference. Do NOT use
-// these variables in your sass. Unless you have
-// a note from your mother.
-$navy: #03293A;
-$blue-light: #04A2E0;
-$green: #28CD7E;
-$gray-light: #EDF0E9;
-$gold: #F6A804;
-$pink: #EC2275;
+// These colors are listed only for reference.
+// Do not use these variables in your sass.
 
-$color-list:
-(one, $navy)
-(two, $blue-light)
-(three, $green)
-(four, $gray-light)
-(five, $gold)
-(six, $pink)
-;
+// PRIMARY
+// Brand palette
+$brand-color:       #3B87D2;
 
-@each $color-name, $color in $color-list {
-  .color-#{$color-name} {
-    background: $color;
-    color: contrast-color($color, #333, #fff);
-    &:after {
-      content: "#{$color-name} #{$color}";
-    }
-  }
-}
+// Return the complementary colour to $brand-color
+$complement-color:  adjust_hue($brand-color, 200);
+
+// Triadic color scheme from $brand-color ? Go!
+$secondary-color:   adjust_hue($brand-color, 120);
+$tertiary-color:    adjust_hue($brand-color, -120);
+$quaternary-color:  adjust_hue($brand-color, -90);
+
+$alert:             #f04124;
+$warm-gray:         #edf0e9;
 
 //=================================================
 // The following variables ARE to be used throughout
-// your sass. Game on.
-$color-one: $navy;
-$color-two: $blue-light;
-$color-three: $gray-light;
-$color-four: $green;
-$color-five: $gold;
+// your sass.
+$color-one:         $brand-color;
+$color-two:         $complement-color;
+$color-three:       $secondary-color;
+$color-four:        $tertiary-color;
+$color-five:        $quaternary-color;
+$color-six:         $alert;
+$white:             #fff;
+$black:             #000;
+
+// NOTE: .bg-color styles are in classy-panels.styles.scss
 
 // For use on drop shadows
-$glass_lt: rgba(255,255,255,0.75);
-$glass_md: rgba(100,100,100, 0.75);
-$glass_dk: rgba(0,0,0,0.75);
+$glass_lt:          rgba(255,255,255,0.75);
+$glass_md:          rgba(100,100,100, 0.75);
+$glass_dk:          rgba(0,0,0,0.75);
 
 // Element Colors:
-$text-primary: #333;
-$text-secondary: #666;
-$text-tertiary: #999;
-$text-quaternary: #ccc;
-$border-primary: $glass-dk;
-$border-secondary: $glass-md;
-$border-tertiary: $glass-lt;
+$text-primary:      #333;
+$text-secondary:    #666;
+$text-tertiary:     #999;
+$text-quaternary:   #ccc;
 
-;$link: $color-one;
-$link-hover: lighten($color-one, 10%);
+$border-primary:    $color-three;
+$border-secondary:  $glass-md;
+$border-tertiary:   $glass-lt;
+
+$link:              $color-two;
+$link-hover:        lighten($link, 10%);
 
 // Icons
-$icon-normal: $color-one;
+$icon-normal:       $color-one;
 $icon-normal-hover: $color-one;
 
 // Buttons
-$button-primary-text: white;
-$button-primary-bg: $color-one;
-$button-primary-text-hover: lighten($button-primary-text, 10%);
-$button-primary-bg-hover: lighten($color-one, 10%);
-$button-border: transparent;
-$button-disabled-text: $text-secondary;
-$button-disabled-bg: #e8e8e8;
-$button-disabled-border: $text-tertiary;
-
-
-
+$button-primary-text:         white;
+$button-primary-bg:           $color-one;
+$button-primary-text-hover:   lighten($button-primary-text, 10%);
+$button-primary-bg-hover:     lighten($color-one, 10%);
+$button-border:               transparent;
+$button-disabled-text:        $text-secondary;
+$button-disabled-bg:          $warm-gray;
+$button-disabled-border:      $text-tertiary;

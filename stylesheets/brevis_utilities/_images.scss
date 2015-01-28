@@ -1,8 +1,8 @@
 //////////////////////////////
 // Blueprint theme paths - for use with interpolation syntax:
 // background: url("#{$base-images}/image-name.png")
-$base: "../../blueprint";
-$base-images: "../../blueprint/blueprint_images";
+$base: "../../";
+$base-images: "../../images";
 
 $content-stream-img-sm: 50%;
 $content-stream-img-md: 47.5%;
@@ -61,7 +61,18 @@ $content-stream-img-md: 47.5%;
 // EXAMPLE:
 // +img2x('puppies', 'png', 100px, 75px)
 
-@mixin svg-bg($filename, $position: 0, $height: 20px, $width: 20px, $spacing: 10px, $bg-color: transparent, $repeat: no-repeat, $attachment: scroll, $source: #{$base-images}, $no-svg-class: ".no-svg", $pseudo: "before") {
+@mixin svg-bg(
+  $filename,
+  $position: 0,
+  $height: 20px,
+  $width: 20px,
+  $spacing: 10px,
+  $bg-color: transparent,
+  $repeat: no-repeat,
+  $attachment: scroll,
+  $source: $base-images,
+  $no-svg-class: ".no-svg",
+  $pseudo: "before") {
   &:#{$pseudo} {
     content: "";
     display: inline-block;
@@ -78,7 +89,10 @@ $content-stream-img-md: 47.5%;
   }
 }
 
-@mixin svg-bg-simple($filename, $source: #{$base-images}, $no-svg-class: ".lt-ie9", $pseudo: "before") {
+@mixin svg-bg-simple($filename,
+  $source: $base-images,
+  $no-svg-class: ".lt-ie9",
+  $pseudo: "before") {
   background-image: url($source + "/" + $filename + ".svg");
   #{$no-svg-class} & {
     background-image: url($source + "/" + $filename + ".png");

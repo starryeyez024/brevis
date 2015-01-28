@@ -1,0 +1,137 @@
+// Primary Buttons
+//
+// Most button use cases should use one of the modifier classes below.
+// Both 'button-primary' and 'button-primar--modifier' doesn't need to
+// be added to the markup. Adding only the modifier class works fine.
+//
+// .button-primary--one - Button Primary: color one
+// .button-primary--two - Button Primary: color two
+// .button-primary--three - Button Primary: color three
+// .button-primary--four - Button Primary: color four
+// .button-secondary - Button Secondary
+// .button--large - Larger button alternative
+//
+// Markup:
+// <button class=" {$modifiers}">HTML Button element</button>
+// <br>
+// <p><a class=" {$modifiers}" href="#">Link with a button class</a></p>
+//
+// Styleguide 2.5
+
+
+// From Normalize:
+// also see _forms.sass
+// 1. Correct color not being inherited.
+//    Known issue: affects color of disabled elements.
+// 2. Correct font properties not being inherited.
+// 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+// 4. Address `font-family` inconsistency between `textarea` and other form in IE 7
+// 5. Improve appearance and consistency with IE 6/7.
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  @if support-legacy-browser(ie, "7") {
+    *font-family: $primary-font;
+    *vertical-align: middle;
+  }
+}
+
+// Address inconsistent `text-transform` inheritance for `button` and `select`.
+// All other form control elements do not inherit `text-transform` values.
+// Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+// Correct `select` style inheritance in Firefox.
+button,
+select {
+  text-transform: none;
+  margin-bottom: 5px;
+}
+
+// 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+//    and `video` controls.
+// 2. Correct inability to style clickable `input` types in iOS.
+// 3. Improve usability and consistency of cursor style between image-type
+//    `input` and others.
+// 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+//    Known issue: inner spacing remains in IE 6.
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  @if support-legacy-browser(ie, "7") {
+    *overflow: visible;
+  }
+}
+
+// Re-set default cursor for disabled elements.
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+// Remove inner padding and border in Firefox 4+.
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+button:hover,
+a.button:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:active,
+a.button:active,
+input[type="reset"]:active,
+input[type="submit"]:active,
+input[type="button"]:active {
+  color: white;
+  background: darken($color-two, 10%);
+}
+
+button::-moz-focus-inner,
+a.button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.l-page {
+  input[type="reset"],
+  input[type="submit"],
+  input[type="button"],
+  button,
+  .button-primary--one  {
+    @extend %button-primary--one;
+  }
+  .button-primary--two {
+    @extend %button-primary--two;
+  }
+  .button-primary--three {
+    @extend %button-primary--three;
+  }
+  .button-primary--four {
+    @extend %button-primary--four;
+  }
+  .button-secondary {
+    @extend %button-secondary;
+  }
+  .button--large {
+    @extend %button--large;
+  }
+}
+
+.mfp-wrap button {
+  &:hover {
+    background: transparent;
+  }
+}

@@ -1,0 +1,99 @@
+@mixin button-color($button-color: $color-one) {
+  background-color: $button-color;
+  &:hover {
+    color: white;
+    background-color: darken($button-color, 15%);
+  }
+}
+
+@mixin button-primary($font-size: 10px, $padding: 1.3rem 1.6rem 1.2rem) {
+  @include border-radius(0);
+  @include background-clip(padding-box);
+  cursor: pointer;
+  display: inline-block;
+  overflow: visible;
+  text-decoration: none;
+  vertical-align: top;
+  width: auto;
+  @include secondary-font;
+  @include font-size($font-size);
+  padding: $padding;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: normal;
+  position: relative;
+  color: white;
+  border: 0;
+  transition: background 0.3s ease;
+  *padding-top: 2px;
+  *padding-bottom: 0;
+  min-width: 150px;
+}
+
+%button-primary {
+  @include button-primary;
+}
+
+%button-primary--one {
+  @extend %button-primary;
+  @include button-color($color-one);
+}
+
+%button-primary--two {
+  @extend %button-primary;
+  @include button-color($color-two);
+}
+
+%button-primary--three {
+  @extend %button-primary;
+  @include button-color($color-three);
+}
+
+%button-primary--four {
+  @extend %button-primary;
+  @include button-color($color-four);
+}
+%button-primary--five {
+  @extend %button-primary;
+  @include button-color($color-five);
+}
+%button-primary--six {
+  @extend %button-primary;
+  @include button-color($color-six);
+}
+
+%button-secondary {
+  @include button-primary(9px, 10px 20px);
+  @include button-color($color-two);
+}
+
+// Modifier for a larger button
+%button--large {
+  @include button-primary(18px, 0.9rem 12rem 1rem);
+  @include button-color($color-two);
+}
+
+%link-as-button {
+  text-align: center !important;
+  cursor: pointer;
+  a {
+    margin: 10px auto;
+    @extend %button-primary--two;
+  }
+}
+%link-as-button-secondary {
+  text-align: center !important;
+  cursor: pointer;
+  a {
+    margin: 10px auto;
+    @extend %button-secondary;
+  }
+}
+
+%rss-button {
+  @include button-primary(13px, 8px 18px);
+  @include button-color($color-six);
+  float: left;
+}

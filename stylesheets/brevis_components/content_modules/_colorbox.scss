@@ -1,6 +1,6 @@
 // Colorbox Core Styles:
 
-%color-box-core {
+@mixin color-box-core {
   #colorbox, #cboxOverlay, #cboxWrapper {
     position: absolute;
     top: 0;
@@ -72,7 +72,7 @@
 //// Colorbox module default style:
 //// The styles are ordered & tabbed in a way that represents
 //// the nesting of the generated HTML.
-%colorbox-styles {
+@mixin colorbox-styles {
   #cboxOverlay {
     background: black;
   }
@@ -127,11 +127,6 @@
         }
         #cboxCurrent {
           display: none;
-          //position: absolute
-          //bottom: 4px
-          //left: 60px
-          //color: #949494
-
         }
         .cboxSlideshow_on #cboxSlideshow {
           position: absolute;

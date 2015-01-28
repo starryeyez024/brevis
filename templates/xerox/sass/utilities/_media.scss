@@ -1,0 +1,9 @@
+
+@mixin svg($filename) {
+  background-image: image-url("icons/#{$filename}.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  .no-svg & {
+    background-image: image-url("icons/#{$filename}.png");
+  }
+}

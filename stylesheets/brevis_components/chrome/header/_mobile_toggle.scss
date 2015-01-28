@@ -6,15 +6,16 @@
   margin: 5px;
   padding-left: $navicon-size;
   &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: $navicon-margin;
-    width: $navicon-size - $navicon-margin * 2;
-    height: $navicon-size - $navicon-margin * 2;
-    background: image-url("hamburger_menu.svg") no-repeat;
-    background-size: cover;
+  content: "|||";
+  padding: 10px;
+  line-height: 0.7;
+  float: right;
+  font-size: 40px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   }
   .modal-content & {
     display: none;

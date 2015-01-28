@@ -1,0 +1,249 @@
+// Region Styles: Layout
+//
+// .cta-1col - 1 Column
+// .cta-2col - 2 Columns
+// .cta-2col-right - 2 Columns: Panes float right
+// .cta-2col-skinny|2 Columns: Panes widths are narrower (extra margins)
+// .cta-2col-skinny-right|2 Columns: Panes widths are narrower (extra margins) and float right
+// .cta-2col-1x3 - 2 Columns: 1 item in the 1st column, 3 items in the 2nd
+// .cta-3col - 3 Columns
+// .cta-4col - 4 Columns
+// .cta-1col-2col - Multi: 1st row is 1 column, additional rows are in 2 columns
+// .cta-1col-3col - Multi: 1st row is 1 column, additional rows are in 3 columns
+//
+// Markup:
+// <div class="clearfix">
+//   <div class="region {$modifiers}">
+//  <div class="region-inner"><div class="main-layout-pane panel-pane pane-fieldable-panels-pane pane-fpid-20 pane-bundle-fpp-cta">
+//    <h2 class="pane-title">sample title CTA</h2>
+//    <div class="pane-content">
+//      <div class="fpp-cta-wrapper ratio-">
+//        <div class="fieldable-panels-pane">
+//          <div class="fieldable-panels-pane-inner">
+//          <div class="field field--name-field-fpp-cta-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even"><p>Designed to guide and support students through the academic decision making process as they explore classes, majors, and potential careers.</p>
+//          </div></div></div><div class="field field--name-field-fpp-cta-link field--type-link-field field--label-hidden"><div class="field__items"><div class="field__item even"><a href="http://google.com">hjk hjk</a></div></div></div>    </div>
+//        </div>
+//      </div>
+//    </div>
+//  </div>
+//  <div class="main-layout-pane panel-pane pane-fieldable-panels-pane pane-fpid-20 pane-bundle-fpp-cta">
+//  <h2 class="pane-title">sample title CTA</h2>
+//  <div class="pane-content">
+//  <div class="fpp-cta-wrapper ratio-">
+//  <div class="fieldable-panels-pane">
+//  <div class="fieldable-panels-pane-inner">
+//  <div class="field field--name-field-fpp-cta-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even"><p>Designed to guide and support students through the academic decision making process as they explore classes, majors, and potential careers.</p>
+//  </div></div></div><div class="field field--name-field-fpp-cta-link field--type-link-field field--label-hidden"><div class="field__items"><div class="field__item even"><a href="http://google.com">hjk hjk</a></div></div></div>    </div>
+//  </div>
+//  </div>
+//  </div>
+//  </div>
+//  <div class="main-layout-pane panel-pane pane-fieldable-panels-pane pane-fpid-6 pane-bundle-fpp-cta">
+//  <h2 class="pane-title"> EXPLORATORY STUDIES</h2>
+//  <div class="pane-content">
+//  <div class="fpp-cta-wrapper ratio-">
+//  <div class="fieldable-panels-pane">
+//  <div class="fieldable-panels-pane-inner">
+//  <div class="field field--name-field-fpp-cta-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even"><p>Designed to guide and support students through the academic decision making process as they explore classes, majors, and potential careers.</p>
+//  </div></div></div><div class="field field--name-field-fpp-cta-link field--type-link-field field--label-hidden"><div class="field__items"><div class="field__item even"><a href="http://butler.mcdev//exploratory">Learn More</a></div></div></div>    </div>
+//  </div>
+//  </div>
+//  </div>
+//  </div>
+//  <div class="main-layout-pane panel-pane pane-fieldable-panels-pane pane-fpid-6 pane-bundle-fpp-cta">
+//  <h2 class="pane-title"> EXPLORATORY STUDIES</h2>
+//  <div class="pane-content">
+//  <div class="fpp-cta-wrapper ratio-">
+//  <div class="fieldable-panels-pane">
+//  <div class="fieldable-panels-pane-inner">
+//  <div class="field field--name-field-fpp-cta-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even"><p>Designed to guide and support students through the academic decision making process as they explore classes, majors, and potential careers.</p>
+//  </div></div></div><div class="field field--name-field-fpp-cta-link field--type-link-field field--label-hidden"><div class="field__items"><div class="field__item even"><a href="http://butler.mcdev//exploratory">Learn More</a></div></div></div>    </div>
+//  </div>
+//  </div>
+//  </div>
+//  </div>
+//  <div class="main-layout-pane panel-pane pane-fieldable-panels-pane pane-fpid-7 pane-bundle-fpp-cta">
+//  <h2 class="pane-title">Student Life</h2>
+//  <div class="pane-content">
+//  <div class="fpp-cta-wrapper ratio-">
+//  <div class="fieldable-panels-pane">
+//  <div class="fieldable-panels-pane-inner">
+//  <div class="field field--name-field-fpp-cta-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even"><p>We offer more than 150 student organizations, 19 Division I athletic teams, 30+ intramural and/or club sports, and an active Greek life.</p>
+//  </div></div></div><div class="field field--name-field-fpp-cta-link field--type-link-field field--label-hidden"><div class="field__items"><div class="field__item even"><a href="http://butler.mcdev//Admission/Bulldog%20Life">Learn More</a></div></div></div>    </div>
+//  </div>
+//  </div>
+//  </div>
+//  </div>
+//  </div>
+//   </div>
+// </div>
+//
+// Styleguide 7.5
+
+#page {
+  .main-top {
+    @include panel-pane-with-ipe {
+      padding: 15px 10px;
+      @include breakpoint($desktop-full) {
+        padding: 15px 0;
+        margin-left: 16px;
+      }
+    }
+  }
+  .l-bricks__content .region-inner,
+  .main-top .region-inner,
+  .l-landing__media .region-inner,
+  .l-2-col__media .region-inner,
+  .content__wrapper {
+    @include clearfix;
+    @include content-max-width;
+    clear: both;
+
+  }
+  .l-main_inner .region-inner ,
+  .l-bricks__content .region-inner {
+    padding-bottom: 2%;
+    @include breakpoint(max-width $desk) {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+
+}
+
+.l-main {
+  clear: both;
+  position: relative;
+  .region-inner {
+    @include clearfix-before;
+  }
+}
+
+.l-page {
+  .l-main_inner .cta-1col {
+    @include panel-pane-with-ipe {
+      @extend %region-1col;
+    }
+  }
+  .cta-2col,
+  .l-landing__highlights.three-quarters .cta-2col {
+    @include panel-pane-with-ipe {
+      @extend %region-2col;
+    }
+  }
+  .l-landing__media .cta-2col,
+  .three-quarters .cta-2col {
+    @include panel-pane-with-ipe {
+      @include region-1col;
+
+      @include breakpoint($desktop) {
+        @include region-col(2);
+      }
+    }
+  }
+  .l-bricks__hero .cta-2col {
+    .pane-title {
+      display: none;
+    }
+    .main-layout-pane {
+      @extend %region-2col-hero;
+    }
+    .panels-ipe-portlet-wrapper {
+      @extend %region-2col-hero;
+      .main-layout-pane .pane-content {
+        width: 100% !important;
+        margin: 0;
+      }
+    }
+  }
+}
+.l-page {
+  .cta-2col-skinny {
+    @include equal-height;
+    @include panel-pane-with-ipe {
+      @extend %region-2col-skinny;
+    }
+  }
+  .l-landing__media .cta-2col-skinny,
+  .three-quarters .cta-2col-skinny {
+    @include panel-pane-with-ipe {
+      @include region-1col;
+      @include breakpoint($desktop) {
+        @include region-col(2, $spacing-double);
+      }
+    }
+  }
+  .cta-2col-skinny-right {
+    @include panel-pane-with-ipe {
+      @extend %region-2col-skinny-right;
+    }
+  }
+  .l-landing__media .cta-2col-skinny-right,
+  .three-quarters .cta-2col-skinny-right {
+    @include panel-pane-with-ipe {
+      @include region-1col;
+      @include breakpoint($desktop) {
+        @include region-col(2, $spacing-double);
+        float: right
+      }
+    }
+  }
+}
+
+.l-page {
+  .cta-2col-right {
+    @include panel-pane-with-ipe {
+      @extend %region-2col-right;
+    }
+  }
+  .l-landing__media .cta-2col-right,
+  .three-quarters .cta-2col-right {
+    @include panel-pane-with-ipe {
+      @include region-1col;
+      @include breakpoint($desktop) {
+        @include region-col(2);
+        float: right;
+      }
+    }
+  }
+}
+
+.l-page .cta-2col-1x3 {
+  @include panel-pane-with-ipe {
+    @extend %region-2col-1x3;
+  }
+}
+.l-page .cta-1col-2col {
+  @include equal-height;
+  @include panel-pane-with-ipe {
+    @extend %region-1col-2col;
+  }
+}
+
+.l-page .cta-3col {
+  @include equal-height;
+  @include panel-pane-with-ipe {
+    @extend %region-3col;
+  }
+}
+.l-page .cta-1col-3col {
+  @include equal-height;
+  @include panel-pane-with-ipe {
+    @extend %region-1col-3col;
+  }
+}
+
+.l-page .cta-4col {
+  @include equal-height;
+  @include panel-pane-with-ipe {
+    @extend %region-4col;
+  }
+  .three-quarters .cta-4col {
+    @include panel-pane-with-ipe {
+      @include region-col(2);
+      @include breakpoint($desktop) {
+        @include region-col(4);
+      }
+    }
+  }
+}

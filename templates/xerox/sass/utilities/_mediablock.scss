@@ -1,0 +1,114 @@
+@mixin mediablock {
+  margin: 0 ;
+  @include clearfix;
+}
+
+@mixin media-separator {
+  &::before {
+    content: " ";
+    display: block;
+    height: 8px;
+    width: 100%;
+    border: $cool-gray solid 1px;
+    margin: 0 0 20px 0;
+    background: image-url("bg-diagonal-green.jpg") repeat;
+    opacity: 0.4;
+    @include breakpoint($tablet-portrait) {
+      height: 18px;
+    }
+  }
+}
+
+@mixin mediablock__title {
+  @include secondary-font;
+  @include font-size(16px, 1.1);
+  @include caps;
+  margin-top: 0 !important;
+  padding-top: 0;
+  border-top: 0 !important;
+  color: $color-two;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-size: inherit;
+    text-transform: inherit;
+    margin-top: inherit;
+    padding-top: inherit;
+    border-top: inherit;
+  }
+  a {
+    color: $color-two;
+  }
+}
+
+$mediablock-img-max-sm: 150px;
+$mediablock-img-max-lg: 230px;
+
+// Default image, floated to the left
+@mixin mediablock__img {
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 0px;
+  width: $mediablock-img-max-sm;
+  height: $mediablock-img-max-sm;
+  background: 50% rgba(239, 243, 241, 0.56) no-repeat url("../images/icons/bulldog_transparent.png");
+  background-size: $mediablock-img-max-sm;
+
+  @include breakpoint($tablet-landscape) {
+    margin-right: 45px;
+    margin-bottom: 5px;
+    width: $mediablock-img-max-lg;
+    height: $mediablock-img-max-lg;
+  }
+  &.icon {
+    float: left;
+    margin-right: 1rem;
+  }
+  img {
+    display: block;
+    width: auto;
+  }
+}
+
+// Modifier to keep the text from flowing around the image.
+@mixin mediablock--tight($body: "mediablock__body") {
+  .#{$body} {
+    overflow: auto;
+  }
+}
+
+// Modifier to float media to the right, text on the left
+@mixin mediablock--reversed {
+  .mediablock__img {
+    @include breakpoint($smartphone-landscape) {
+      float: right;
+      margin-right: 0;
+      margin-left: 1em;
+    }
+  }
+}
+
+
+@mixin mediablock-tight-view (
+  $unit-name: ".views-row",
+  $image-field: ".pane-node-field-shared-image",
+  $title-field: ".pane-node-title, .pane-butler-core-node-title-pane",
+  $body-field: ".pane-node-body") {
+
+  #{$unit-name} {
+    @include mediablock;
+    #{$image-field} {
+      @include mediablock__img;
+    }
+    #{$title-field}  {
+      @include mediablock__title;
+      overflow: auto;
+    }
+    #{$body-field}  {
+      overflow: auto;
+    }
+  }
+  #{$unit-name} ~ #{$unit-name} {
+   @include media-separator;
+  }
+}

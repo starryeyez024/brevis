@@ -1,0 +1,144 @@
+
+// Pane Styles: Padding
+//
+// .no-padding - Remove all Padding
+// .extra-padding - Double padding on all sides
+// .extra-wide-padding - Normal padding on top and bottom, triple padding on the left & right sides
+// .extra-tall-padding - Triple padding on top and bottom, normal padding on the left & right sides
+// .top-heavy-padding - Large amount of padding on the top, for showing off background images
+//
+// Markup:
+// <div style="background:#eee" class="{$modifiers} main-layout-pane panel-pane pane-fieldable-panels-pane pane-fpid-20">
+//  <h2 class="pane-title">sample title CTA</h2>
+//  <div class="pane-content">
+//  <div class="fpp-cta-wrapper ratio-">
+//  <div class="fieldable-panels-pane">
+//  <div class="fieldable-panels-pane-inner">
+//  <div class="field field--name-field-fpp-cta-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even"><p>Designed to guide and support students through the academic decision making process as they explore classes, majors, and potential careers.</p>
+//  </div></div></div><div class="field field--name-field-fpp-cta-link field--type-link-field field--label-hidden"><div class="field__items"><div class="field__item even"><a href="http://google.com">hjk hjk</a></div></div></div>    </div>
+//  </div>
+//  </div>
+//  </div>
+// </div>
+//
+// Styleguide 7.5.1
+
+
+// Basics:
+.content__wrapper,
+.bricks-content__wrapper {
+  .main-layout-pane,
+  .panels-ipe-portlet-wrapper {
+    margin-top: 2%;
+  }
+  @include breakpoint($tablet-landscape){
+    .sidebar {
+      .main-layout-pane,
+      .panels-ipe-portlet-wrapper {
+        margin-top: 4%;
+      }
+    }
+  }
+}
+
+.l-main_inner {
+  @include panel-pane-with-ipe  {
+    @include clearfix;
+    @include breakpoint(max-width $phone-l) {
+      margin-top: 10px;
+    }
+  }
+}
+
+// Classy Panel Style overrides
+#page {
+  @include panel-pane-with-ipe {
+    &.no-padding {
+      padding: 0;
+    }
+    &.extra-padding {
+      @extend %extra-padding;
+    }
+    &.extra-wide-padding {
+      @extend %extra-wide-padding;
+    }
+    &.extra-tall-padding {
+      @extend %extra-tall-padding;
+    }
+    &.top-heavy-padding {
+      @extend %top-heavy-padding;
+    }
+    &.no-margin {
+      @extend %no-margin;
+    }
+    &.no-margin-top {
+      @extend %no-margin-top;
+    }
+    &.no-padding-no-margin {
+      @extend %no-padding-no-margin;
+    }
+    &.top-heavy-margin {
+      @extend %top-heavy-margin;
+    }
+  }
+  @include breakpoint($tablet-landscape){
+    .sidebar {
+      @include panel-pane-with-ipe {
+        &.top-heavy-margin {
+          margin-top: 10%;
+        }
+      }
+    }
+  }
+  .cta-1col {
+    @include panel-pane-with-ipe {
+      &.no-margin,
+      &.no-padding-no-margin {
+        width: 100%;
+      }
+    }
+  }
+  .cta-2col {
+    @include panel-pane-with-ipe {
+      &.no-margin,
+      &.no-padding-no-margin {
+        width: 50%;
+      }
+    }
+  }
+  .cta-3col {
+    @include panel-pane-with-ipe {
+      &.no-margin,
+      &.no-padding-no-margin {
+        width: 33.3%;
+      }
+    }
+  }
+  .cta-4col {
+    @include panel-pane-with-ipe {
+      &.no-margin,
+      &.no-padding-no-margin {
+        width: 25%;
+      }
+    }
+  }
+  .cta-1col-2col ,
+  .cta-1col-3col, {
+    @include panel-pane(1) {
+      &.no-margin,
+      &.no-padding-no-margin {
+        width: 100%;
+      }
+    }
+  }
+}
+
+#page .panels-ipe-empty-pane,
+#page .pane-node-field-landing-bg-image {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.pane-node-field-landing-bg-image {
+  display: none !important;
+}

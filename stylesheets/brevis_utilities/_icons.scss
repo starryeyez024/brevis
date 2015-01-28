@@ -1,0 +1,8 @@
+@mixin highdpi-icon($filename, $size) {
+  background-image: image-url("icons/#{$filename}.png");
+  background-size: $size;
+  background-repeat: no-repeat;
+  @include breakpoint($hidpi) {
+    background-image: image-url("icons/#{$filename}@2x.png");
+  }
+}

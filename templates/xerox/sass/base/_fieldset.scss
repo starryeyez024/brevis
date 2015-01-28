@@ -1,0 +1,24 @@
+//Define consistent border, margin, and padding.
+
+fieldset {
+  margin: 0 2px;
+  border-color: silver;
+  @include apply-side-rhythm-border(top, $width: 1px, $lines: 0.35);
+  @include apply-side-rhythm-border(bottom, $width: 1px, $lines: 0.65);
+  @include apply-side-rhythm-border(left, $width: 1px, $lines: 0.625);
+  @include apply-side-rhythm-border(right, $width: 1px, $lines: 0.625);
+}
+
+legend {
+  @if support-legacy-browser(ie, "11") {
+    border: 0;
+  }
+  padding: 0;
+  @if support-legacy-browser(ie, "7") {
+    *margin-left: -7px;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}

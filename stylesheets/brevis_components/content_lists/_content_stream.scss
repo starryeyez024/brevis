@@ -98,7 +98,7 @@
 
 %content-stream-image-md {@include content-stream-image-md;}
 
-@include content-stream-image-lg {
+@mixin content-stream-image-lg {
   @include image-pane {
     width: 100%;
     max-width: 100%;
@@ -344,12 +344,6 @@
 
   @include breakpoint($tab-p-desk) {
     @include fluid-grid(2, $padding: 1%);
-    .views-row-5, .views-row-6 //Show only 4 items {
-      display: none;
-    }
-    .views-row-4 {
-      margin-left: 0;
-    }
   }
 
   @include breakpoint($desktop) {

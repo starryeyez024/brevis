@@ -1,4 +1,4 @@
-%sticky-wrapper {
+@mixin sticky-wrapper {
   z-index: map-get($zindex, header);
   position: relative;
   clear: both;
@@ -11,7 +11,7 @@
   }
 }
 
-%sticky-menu {
+@mixin sticky-menu {
   float: left !important;
   clear: both !important;
   clear: both !important;
@@ -39,7 +39,7 @@
   }
 }
 
-%sticky-menu-anchor {
+@mixin sticky-menu-anchor {
   display: block;
   position: relative;
   top: -50px;

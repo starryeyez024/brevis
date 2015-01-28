@@ -1,0 +1,440 @@
+// FLUID GRID COLUMNS Example:  http://sassmeister.com/gist/7951177
+$spacing: 15px;
+$spacing-double: $spacing * 2;
+$spacing-triple: $spacing * 3;
+
+@mixin content-max-width {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@mixin clearfix-before {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+// To make hero styles work with IPE:
+// Use in @include panel-pane-with-ipe place of .panel-pane
+@mixin panel-pane-with-ipe {
+  .main-layout-pane {
+    @content;
+  }
+  .panels-ipe-portlet-wrapper {
+    @content;
+    .main-layout-pane {
+      width: 100% !important;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+// To make hero styles work with IPE:
+// Use in @include panel-pane-with-ipe place of .panel-pane
+@mixin panel-pane-ipe-compound {
+  &.main-layout-pane {
+    @content;
+  }
+  &.panels-ipe-portlet-wrapper {
+    @content;
+    .main-layout-pane {
+      width: 100% !important;
+      margin: 0;
+      border: 0;
+      padding: 0;
+      //padding: 0 !important;
+    }
+  }
+}
+
+@mixin panel-pane($nth: null) {
+  @if ($nth) {
+    .main-layout-pane:nth-child(#{$nth}),
+    .panels-ipe-portlet-wrapper:nth-child(#{$nth}) .main-layout-pane {
+      @content;
+    }
+  }
+  @else {
+    .main-layout-pane,
+    .panels-ipe-portlet-wrapper .main-layout-pane {
+      @content;
+    }
+  }
+}
+
+//css columns
+//add colums using css-columns-count(3)
+@mixin css-column-count($how-many:1){
+    -webkit-column-count: $how-many; /* Chrome, Safari, Opera */
+    -moz-column-count: $how-many; /* Firefox */
+    column-count: $how-many;
+  }
+
+//adds break - inside, accepts values auto: auto, avoid: avoid page breaks, initial: sets to default (auto), inherit: from parent
+@mixin css-column-break($break-on-this:avoid){
+      -webkit-column-break-inside:$break-on-this;
+      -moz-column-break-inside:$break-on-this;
+      -o-column-break-inside:$break-on-this;
+      -ms-column-break-inside:$break-on-this;
+      column-break-inside:$break-on-this;
+}
+
+@mixin image-style-ratio ($height: 1, $width: 1, $margin: 0px) {
+  padding-top: calc(#{percentage($height/$width)} - #{$margin}) !important;
+}
+
+@mixin vertical-center(
+  $container-height: 300px,
+  $inner-name: ".block-inner",
+  $inner-width: "80%") {
+  height: $container-height;
+  text-align: center;
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  #{$inner-name} {
+    display: inline-block;
+    vertical-align: middle;
+    width: $inner-width;
+    padding: (100% - $inner-width)/2;
+  }
+}
+
+// Vertical Alignment with Intrinsic ratio which sets the height of the container
+// http://sassmeister.com/gist/bbdf3b09d856138b3989
+@mixin vertical-center-with-ir (
+  $inner-name: ".block-inner",
+  $inner-width: 90%,
+  $container-height: auto,
+  $inner-inner-name: "#{$inner-name}-inner" ){
+  #{$inner-name} {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    width: $inner-width;
+    position: absolute !important;
+    top: 0;
+    left: (100% - $inner-width) / 2.05;
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 0px;
+      font-size: 0;
+      vertical-align: middle;
+    }
+  }
+  #{$inner-name}-inner {
+    display: inline-block;
+    vertical-align: middle;
+    width: 97%;
+    text-align: center;
+  }
+}
+
+//this allows you to change out the container and internal name.
+
+@mixin vertical-center-with-ir-flex (
+  $inner-name: ".block-inner",
+  $inner-inner:".block-inner",
+  $inner-width: 80%,
+  $container-height: auto)
+  {
+  #{$inner-name} {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    width: $inner-width;
+    position: absolute;
+    top: 0;
+    left: (100% - $inner-width) / 2;
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      font-size: 0;
+      vertical-align: middle;
+    }
+  }
+  #{$inner-inner} {
+    display: inline-block;
+    vertical-align: middle;
+    width: 98%;
+  }
+}
+
+@mixin equal-height{
+  .region-inner{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+$spacing: 15px;
+$spacing-double: $spacing * 2;
+$spacing-triple: $spacing * 3;
+
+//////////////////////////////////////////////////////////////////
+// REGION COLUMN LAYOUT MIXINS
+// These styles only account for left & right margins between panes
+@mixin region-1col {
+  clear: both;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  @include breakpoint(max-width $tab-l) {
+    @include panel-pane-ipe-compound {
+      &[class*='cta-primary'],
+      &[class*='cta-secondary'] {
+        max-width: 450px;
+      }
+    }
+  }
+}
+
+@mixin region-col($cols: 3, $space: $spacing, $offset: null, $margin-direction: right, $rows: 3) {
+  margin-#{$margin-direction}: $spacing;
+  clear: none;
+  max-width: 100%;
+  $minus-margins: ceil($space * (($cols - 1) / $cols)) + 1px;
+
+  @if $margin-direction == "right" {
+    float: left;
+  }
+  @if $margin-direction == "left" {
+    float: right;
+  }
+
+  @if $offset {
+
+    &:nth-child(n+#{$offset + 1}) {
+      width: calc( (100% / #{$cols}) - #{$minus-margins});
+    }
+    &:nth-child(#{$cols + $offset}),
+    &:nth-child(#{$cols * 2 + $offset}),
+    &:nth-child(#{$cols * 3 + $offset}) {
+      margin-#{$margin-direction}: 0;
+    }
+    &:nth-child(#{$cols + 1 + $offset}),
+    &:nth-child(#{$cols * 2 + 1 + $offset}),
+    &:nth-child(#{$cols * 3 + 1 + $offset}) {
+      clear: left;
+    }
+
+  }
+  @else {
+    width: calc( (100% / #{$cols}) - #{$minus-margins});
+
+    &:nth-child(#{$cols}),
+    &:nth-child(#{$cols * 2}),
+    &:nth-child(#{$cols * 3}) {
+      margin-#{$margin-direction}: 0;
+    }
+    &:nth-child(#{$cols + 1}),
+    &:nth-child(#{$cols * 2 + 1}),
+    &:nth-child(#{$cols * 3 + 1}), {
+      clear: left;
+    }
+  }
+}
+
+@mixin region-2col-1x3 {
+    margin-right: $spacing;
+  float: left;
+  clear: none;
+  max-width: 100%;
+  width: calc((100% / 2) - #{$spacing});
+  margin-left: 0;
+  &:nth-child(n + 2) {
+    margin-top: $spacing;
+    margin-bottom: 0;
+    margin-left: 0;
+    clear: right;
+    float: right;
+  }
+  &:nth-child(n + 3) {
+     margin-top: 0;
+  }
+}
+
+@mixin region-2col-60-40 {
+  float: left;
+  clear: none;
+  max-width: 100%;
+  width: 60%;
+  margin-left: 0%;
+  margin-right: 0%;
+  &:nth-child(even) {
+    width: 40%;
+    margin-left: 0%;
+    max-width: 300px;
+  }
+  &:nth-child(3) {
+    clear: left;
+  }
+}
+
+//  REGION COLUMN LAYOUT PLACEHOLDERS
+%region-1col {
+  @include region-1col;
+}
+
+%region-2col {
+  @include region-1col;
+  @include breakpoint($region-col-snap) {
+    @include region-col(2);
+  }
+}
+
+%region-2col-1x3 {
+  @include region-1col;
+  @include breakpoint($region-col-snap) {
+    @include region-2col-1x3;
+  }
+}
+
+%region-1col-2col {
+  @include region-1col;
+  @include breakpoint($region-col-snap) {
+    @include region-col(2, $offset: 1);
+  }
+}
+
+%region-2col-right {
+  @include region-1col;
+  @include breakpoint($region-col-snap) {
+    @include region-col(2, $offset: 1, $margin-direction: left);
+  }
+
+}
+
+%region-2col-skinny {
+  @include region-1col;
+  @include breakpoint($region-col-snap) {
+    @include region-col(2, $spacing-double);
+  }
+}
+%region-2col-skinny-right {
+  @include region-1col;
+  @include breakpoint($region-col-snap) {
+    @include region-col(2, $spacing-double, $margin-direction: left);
+  }
+}
+
+%region-2col-60-40 {
+  float: left;
+  clear: both;
+  width: 100%;
+  @include breakpoint($tablet-portrait) {
+    @include region-2col-60-40;
+  }
+}
+
+%region-2col-hero {
+  @include region-1col;
+  text-align: center;
+
+  @include breakpoint($region-col-snap) {
+    width: 50%;
+    padding: 0px;
+    margin: 0;
+    float: left;
+    clear: none;
+    max-width: 100%;
+  }
+  .fpp-cta-wrapper {
+    @include breakpoint($region-col-snap) {
+      padding: 10px 30px;
+    }
+    @include breakpoint($desktop) {
+      padding: 10px 50px;
+    }
+  }
+}
+
+%region-3col {
+  @include region-1col;
+
+  @include breakpoint($tablet-portrait) {
+    @include region-col(3);
+  }
+}
+
+%region-1col-3col {
+  @include region-1col;
+  @include breakpoint($phone-l ($region-col-snap - 1px)) {
+    @include region-col(2, $offset: 1);
+  }
+  @include breakpoint($region-col-snap) {
+    @include region-col(3, $offset: 1);
+  }
+}
+
+%region-4col {
+  @include region-1col;
+  @include breakpoint(430px 840px) {
+    @include region-col(2);
+  }
+  @include breakpoint(841px, "no-query" ".lt-ie9") {
+    @include region-col(4);
+  }
+}
+
+%extra-padding {
+  padding: $spacing-double;
+}
+%wide-padding {
+  padding: $spacing 7%;
+}
+%extra-wide-padding {
+  padding: $spacing 15%;
+}
+%extra-tall-padding {
+  padding: $spacing-triple $spacing;
+}
+%no-margin {
+  margin: 0;
+  padding: 0 0 $spacing;
+  width: 100%;
+}
+
+
+%top-heavy-padding {
+  padding: 15px;
+  @include breakpoint($laptop) {
+    padding: 90px 15px 15px;
+  }
+  @include breakpoint($desk-display) {
+    padding: 645px 15px 15px;
+  }
+}
+
+
+%no-margin {
+  margin: 0;
+}
+
+%no-margin-top {
+  margin-top: 0;
+}
+
+%no-padding-no-margin {
+  margin: 0;
+  padding: 0;
+}
+%top-heavy-margin {
+  margin-top: 4%;
+}

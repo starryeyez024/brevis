@@ -25,6 +25,11 @@ $browser-minimum-versions: (
 $indent-amount: 40px !default;
 $strict-normalize: true !default;
 
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+
 // All components have been moved into appropriate partials
 
 
