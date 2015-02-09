@@ -3,6 +3,8 @@
 # By default, you should always included Compass. Do not include your
 #  extension.
 require 'compass'
+require 'breakpoint'
+require 'toolkit'
 
 # This tells Compass what your Compass extension is called, and where to find
 #  its files
@@ -17,8 +19,8 @@ Compass::Frameworks.register('brevis', :path => extension_path)
 #    a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module Brevis
-  VERSION = "0.1.4"
-  DATE = "2015-01-28"
+  VERSION = "0.2.3"
+  DATE = "2015-02-06"
 end
 
 # This is where any custom SassScript should be placed. The functions will be

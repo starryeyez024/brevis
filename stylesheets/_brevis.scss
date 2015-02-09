@@ -5,6 +5,7 @@
 @import "brevis_utilities/animations";
 @import "brevis_utilities/breakpoints";
 @import "brevis_utilities/colors";
+@import "brevis_utilities/discontinued";
 @import "brevis_utilities/eq";
 @import "brevis_utilities/font_awesome.scss";
 @import "brevis_utilities/forms";
@@ -12,6 +13,7 @@
 @import "brevis_utilities/images";
 @import "brevis_utilities/icons";
 @import "brevis_utilities/layout";
+@import "brevis_utilities/mediablock";
 @import "brevis_utilities/page";
 @import "brevis_utilities/tooltip";
 @import "brevis_utilities/typography";
@@ -32,4 +34,5 @@
 @import "brevis_components/content_modules/chosen";
 @import "brevis_components/content_modules/colorbox";
 @import "brevis_components/content_modules/flexslider";
+@import "brevis_components/content_modules/island";
 @import "brevis_components/content_modules/sticky_menu";

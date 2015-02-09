@@ -242,3 +242,20 @@ $icon-font: "FontAwesome";
     transform: none;
     transition: none;
 }
+
+
+//CSS Columns - add colums using css-columns-count(3)
+@mixin css-column-count($how-many:1){
+  -webkit-column-count: $how-many; /* Chrome, Safari, Opera */
+  -moz-column-count: $how-many; /* Firefox */
+  column-count: $how-many;
+}
+
+//adds break - inside, accepts values auto: auto, avoid: avoid page breaks, initial: sets to default (auto), inherit: from parent
+@mixin css-column-break($break-on-this:avoid){
+  -webkit-column-break-inside:$break-on-this;
+  -moz-column-break-inside:$break-on-this;
+  -o-column-break-inside:$break-on-this;
+  -ms-column-break-inside:$break-on-this;
+  column-break-inside:$break-on-this;
+}

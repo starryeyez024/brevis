@@ -1,109 +1,215 @@
-
-////////////////////////////////////////////////////
-// FLUID GRID COLUMNS  http://sassmeister.com/gist/710eded4e6a323fdfdb6
-///////////////////////////////////////////////////
-$fluid-grid-cols: 1;
-$fluid-grid-grid-rows: 10;
-$fluid-grid-padding: 20px;
-$fluid-grid-class-name: views-row;
-
-@mixin fluid-grid(
- $cols: $fluid-grid-cols,
- $grid-rows: $fluid-grid-grid-rows,
- $padding: $fluid-grid-padding,
- $class-name: $fluid-grid-class-name
-){
-  .#{$class-name} {
-    width: calc((100% / #{$cols}) + (#{$padding} / #{$cols}));
-    padding: 0 0 $padding $padding;
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
   }
-  @for $x from 1 through $grid-rows {
-    .#{$class-name}-#{$x * $cols - ($cols - 1)} {
-      margin-left: -$padding;
-      clear: both;
+}
+@mixin clearfix-before {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/////////////////////////////////////////////////
+$content-max-width: 1000px;
+
+@mixin content-max-width ($max-content-width: $content-max-width) {
+  max-width: $max-content-width;
+  margin: 0 auto;
+}
+
+///////////////////////////////////////////////////
+// SYMMETRIC (FLUID) GRID
+// http://sassmeister.com/gist/9226e7dc2a5f2dc0cef9
+////////////////////////////////////////////////////
+$sg-cols: 3;
+$sg-spacing: 20px;
+$sg-offset: null;
+$sg-margin-direction: right;
+$sg-rows: 4;
+
+@mixin symmetric-grid(
+  $cols: $sg-cols,
+  $space: $sg-spacing,
+  $offset: $sg-offset,
+  $margin-direction: $sg-margin-direction,
+  $rows: $sg-rows
+  ){
+  margin-#{$margin-direction}: $space;
+  clear: none;
+  max-width: 100%;
+  $minus-margins: ceil($space * ($cols - 1) / $cols) + 1px;
+  @if $margin-direction == "right" {
+    float: left;
+  }
+  @if $margin-direction == "left" {
+    float: right;
+  }
+  @if $offset {
+    &:nth-child(#{$offset}) {
+      width: 100%;
+    }
+    &:nth-child(n+#{$offset + 1}) {
+      width: calc((100% / #{$cols}) - #{$minus-margins});
+    }
+    @for $i from 1 through $rows {
+      &:nth-child(#{$cols * $i + $offset}) {
+        margin-#{$margin-direction}: 0;
+      }
+      &:nth-child(#{$cols * $i + 1 + $offset}) {
+        clear: left;
+      }
+      &:nth-child(n + #{$i + $offset}) {
+        margin-top: $sg-spacing;
+      }
+    }
+  }
+  @else {
+    width: calc((100% / #{$cols}) - #{$minus-margins});
+    @for $i from 1 through $rows {
+      &:nth-child(#{$cols * $i}) {
+        margin-#{$margin-direction}: 0;
+      }
+      &:nth-child(#{$cols * $i + 1}) {
+        clear: left;
+      }
+      &:nth-child(n + #{$i * $rows + 1}) {
+        margin-top: $sg-spacing;
+      }
     }
   }
 }
 
-@mixin grid-mobile(
- $class-name: $fluid-grid-class-name
-){
-  .#{$class-name} {
-    float: left;
-    clear: both;
-    width: 100%;
-    @include box-sizing("border-box");
+// EXAMPLE
+//.view-foobar .views-row {
+//  @include breakpoint(500px 700px){
+//    @include symmetric-grid(2, 10px);
+//  }
+//  @include breakpoint(700px 1000px){
+//    @include symmetric-grid(3, 10px);
+//  }
+//  @include breakpoint(1000px){
+//    @include symmetric-grid(4, 30px, 1);
+//  }
+//}
+
+
+/////////////////////////////////////////////////////////////
+// IPE WORKAROUND MIXINS
+// Used best with Classy Panel Styles Module
+// To make pane styles work with IPE:
+// Use in @include panel-pane-with-ipe place of .panel-pane
+
+// GENERAL USE
+@mixin panel-pane-with-ipe ($pane-name: "main-layout-pane") {
+  .#{$pane-name} {
+    @content;
+  }
+  .panels-ipe-portlet-wrapper {
+    @content;
+    .#{$pane-name} {
+      width: 100% !important;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+// APPEND TO SAME CONTAINER
+@mixin panel-pane-ipe-compound ($pane-name: "main-layout-pane") {
+  &.#{$pane-name} {
+    @content;
+  }
+  &.panels-ipe-portlet-wrapper {
+    @content;
+    .#{$pane-name} {
+      width: 100% !important;
+      margin: 0;
+      border: 0;
+      padding: 0;
+    }
+  }
+}
+// NTH CHILD
+@mixin panel-pane($nth: null, $pane-name: "main-layout-pane") {
+  @if ($nth) {
+    .#{$pane-name}:nth-child(#{$nth}),
+    .panels-ipe-portlet-wrapper:nth-child(#{$nth}) .#{$pane-name} {
+      @content;
+    }
+  }
+  @else {
+    .#{$pane-name},
+    .panels-ipe-portlet-wrapper .#{$pane-name} {
+      @content;
+    }
   }
 }
 
-@mixin grid-desktop(
- $class-name: $fluid-grid-class-name
- ){
-  .#{$class-name} {
-    float: left;
-    clear: none;
-    @include box-sizing("border-box");
-  }
-}
-
-// When using the fluid grid mixin, plug in the following variables:
-// the number of columns
-// the number of rows (if you are unsure guess and add 1 or 2)
-// the padding for the left & right edge of each row
-// and the name of the class for the rows themselves.
-
-// Use the grid-mobile mixin for mobile, and then add a breakpoint
-// and use the grid-desktop mixin for columns 2 and up.
-
-
-
-//======================================
-
-@mixin width-25($padding: 0) {
-  width: 25%;
-  float: left;
-  padding: $padding;
-}
-
-@mixin width-33($padding: 0) {
-  width: 33.33%;
-  float: left;
-  padding: $padding;
-}
-
-@mixin width-50($padding: 0) {
-  width: 50%;
-  float: left;
-  padding: $padding;
-}
-
-@mixin width-66($padding: 0) {
-  width: 66%;
-  float: left;
-  padding: $padding;
-}
-
-@mixin width-75($padding: 0) {
-  width: 75%;
-  float: left;
-  padding: $padding;
-}
-
-@mixin width-100($padding: 0) {
+//////////////////////////////////////////////////////////////////
+// REGION COLUMN LAYOUT MIXINS
+// These styles only account for left & right margins between panes
+@mixin region-1col (
+  $tablet-max-name: false,
+  $tablet-max-breakpoint: 600px,
+  $tablet-max-width: 450px
+  ){
+  clear: both;
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  @if $tablet-max-name {
+    @include breakpoint(max-width $tablet-max-breakpoint) {
+      @include panel-pane-ipe-compound {
+        &.#{$tablet-max-name} {
+          max-width: $tablet-max-width;
+        }
+      }
+    }
+  }
 }
-
-@mixin width-50-100($padding: 0) {
-  width: 100%;
+// SPECIALTY MIXINS
+@mixin region-2col-1x3 {
+  margin-right: $spacing;
   float: left;
-  padding: $padding;
-  @include breakpoint($tablet-portrait) {
-    width: 50%;
-    float: left;
-    padding: $padding;
+  clear: none;
+  max-width: 100%;
+  width: calc((100% / 2) - #{$spacing});
+  margin-left: 0;
+  &:nth-child(n + 2) {
+    margin-top: $spacing;
+    margin-bottom: 0;
+    margin-left: 0;
+    clear: right;
+    float: right;
+  }
+  &:nth-child(n + 3) {
+     margin-top: 0;
   }
 }
 
+@mixin region-2col-60-40 {
+  float: left;
+  clear: none;
+  max-width: 100%;
+  width: 60%;
+  margin-left: 0%;
+  margin-right: 0%;
+  &:nth-child(even) {
+    width: 40%;
+    margin-left: 0%;
+    max-width: 300px;
+  }
+  &:nth-child(3) {
+    clear: left;
+  }
+}
+
+
+/////////////////////////////////////////////////
 
 @mixin vertical-center(
   $container-height: 300px,
@@ -193,130 +299,5 @@ $fluid-grid-class-name: views-row;
   .region-inner{
     display: flex;
     flex-wrap: wrap;
-  }
-}
-
-
-
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-// Panel region layouts, used best with Classy Panel Styles
-
-$spacing: 15px;
-$spacing-double: $spacing * 2;
-$spacing-triple: $spacing * 3;
-$content-max-width: 1000px;
-
-@mixin content-max-width {
-  max-width: $content-max-width;
-  margin: 0 auto;
-}
-
-// To make hero styles work with IPE:
-// Use in @include panel-pane-with-ipe place of .panel-pane
-@mixin panel-pane-with-ipe {
-  .main-layout-pane {
-    @content;
-  }
-  .panels-ipe-portlet-wrapper {
-    @content;
-    .main-layout-pane {
-      width: 100% !important;
-      margin: 0;
-      padding: 0;
-    }
-  }
-}
-// To make hero styles work with IPE:
-// Use in @include panel-pane-with-ipe place of .panel-pane
-@mixin panel-pane-ipe-compound {
-  &.main-layout-pane {
-    @content;
-  }
-  &.panels-ipe-portlet-wrapper {
-    @content;
-    .main-layout-pane {
-      width: 100% !important;
-      margin: 0;
-      border: 0;
-      padding: 0;
-      //padding: 0 !important;
-    }
-  }
-}
-
-@mixin panel-pane($nth: null) {
-  @if ($nth) {
-    .main-layout-pane:nth-child(#{$nth}),
-    .panels-ipe-portlet-wrapper:nth-child(#{$nth}) .main-layout-pane {
-      @content;
-    }
-  }
-  @else {
-    .main-layout-pane,
-    .panels-ipe-portlet-wrapper .main-layout-pane {
-      @content;
-    }
-  }
-}
-//////////////////////////////////////////////////////////////////
-// REGION COLUMN LAYOUT MIXINS
-// These styles only account for left & right margins between panes
-@mixin region-1col {
-  clear: both;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  @include breakpoint(max-width $tab-l) {
-    @include panel-pane-ipe-compound {
-      &[class*='cta-primary'],
-      &[class*='cta-secondary'] {
-        max-width: 450px;
-      }
-    }
-  }
-}
-@mixin region-col($cols: 3, $space: $spacing, $offset: null, $margin-direction: right, $rows: 3) {
-  margin-#{$margin-direction}: $spacing;
-  clear: none;
-  max-width: 100%;
-  $minus-margins: ceil($space * (($cols - 1) / $cols)) + 1px;
-
-  @if $margin-direction == "right" {
-    float: left;
-  }
-  @if $margin-direction == "left" {
-    float: right;
-  }
-
-  @if $offset {
-    &:nth-child(n+#{$offset + 1}) {
-      width: calc( (100% / #{$cols}) - #{$minus-margins});
-    }
-    &:nth-child(#{$cols + $offset}),
-    &:nth-child(#{$cols * 2 + $offset}),
-    &:nth-child(#{$cols * 3 + $offset}) {
-      margin-#{$margin-direction}: 0;
-    }
-    &:nth-child(#{$cols + 1 + $offset}),
-    &:nth-child(#{$cols * 2 + 1 + $offset}),
-    &:nth-child(#{$cols * 3 + 1 + $offset}) {
-      clear: left;
-    }
-  }
-  @else {
-    width: calc( (100% / #{$cols}) - #{$minus-margins});
-
-    &:nth-child(#{$cols}),
-    &:nth-child(#{$cols * 2}),
-    &:nth-child(#{$cols * 3}) {
-      margin-#{$margin-direction}: 0;
-    }
-    &:nth-child(#{$cols + 1}),
-    &:nth-child(#{$cols * 2 + 1}),
-    &:nth-child(#{$cols * 3 + 1}), {
-      clear: left;
-    }
   }
 }

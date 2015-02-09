@@ -159,3 +159,7 @@ $content-stream-img-md: 47.5%;
   width: 636px;
   height: 223px;
 }
+
+@mixin image-style-ratio ($height: 1, $width: 1, $margin: 0px) {
+  padding-top: calc(#{percentage($height/$width)} - #{$margin}) !important;
+}

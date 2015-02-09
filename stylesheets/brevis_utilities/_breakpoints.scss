@@ -2,25 +2,26 @@
 $breakpoint-to-ems: true;
 
 $print-media: "print";
-$hidpi: min-resolution 143dppx;
+$hidpi: min-resolution 2dppx;
 
 // For use with max-width only:
 // +breakpoint(max-width: $tab-l)
-$phone-p: 319px;
+$phone-p: 340px;
 $phone-l: 479px;
 $tab-p: 639px;
+$region-col-snap: 775px;
 $tab-l: 769px;
 $desk: 1020px;
-$desk-full: 1079px;
+$desk-wide: 1200px;
 
 // For use with min-width (default breakpoint mixin)
 // +breakpoint($desktop)
-$smartphone-portrait: "screen" $phone-p + 1px;
-$smartphone-landscape: "screen" $phone-l + 1px;
-$tablet-portrait: "screen" $tab-p + 1px;
-$tablet-landscape: "screen" $tab-l + 1px;
+$smartphone-portrait: $phone-p + 1px;
+$smartphone-landscape: $phone-l + 1px;
+$tablet-portrait: $tab-p + 1px;
+$tablet-landscape: $tab-l + 1px;
 $desktop: $desk + 1px, "no-query" ".lt-ie9";
-
+$desktop-wide: $desk-wide + 1px, "no-query" ".lt-ie9";
 $desktop-print: $desk + 1px, $print-media, "no-query" ".lt-ie9";
 
 // use

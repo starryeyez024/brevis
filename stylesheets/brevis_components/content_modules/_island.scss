@@ -1,0 +1,13 @@
+///////////////////////////////////////////
+//  ISLAND -  Harry Robert's "island"
+
+$island-spacing: 20px;
+
+@mixin island ($spacing: $island-spacing){
+  display: block;
+  margin-bottom: $spacing;
+  padding-top: $spacing;
+  padding-bottom: $spacing;
+  @include clearfix;
+  > :last-child { margin-bottom: 0; }
+}

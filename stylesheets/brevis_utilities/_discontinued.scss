@@ -1,0 +1,100 @@
+
+////////////////////////////////////////////////////
+// DISCONTINUED FLUID GRID: http://sassmeister.com/gist/7951177
+$fluid-grid-cols: 1;
+$fluid-grid-grid-rows: 10;
+$fluid-grid-padding: 2%;
+$fluid-grid-class-name: views-row;
+
+@mixin grid-mobile($class-name: $fluid-grid-class-name) {
+  .#{$class-name} {
+    float: left;
+    clear: both;
+    width: 100%;
+    @include box-sizing("border-box");
+  }
+}
+
+@mixin grid-desktop($class-name: $fluid-grid-class-name) {
+  .#{$class-name} {
+    float: left;
+    clear: none;
+    @include box-sizing("border-box");
+  }
+}
+
+@mixin fluid-grid($cols: $fluid-grid-cols, $grid-rows: $fluid-grid-grid-rows, $padding: $fluid-grid-padding, $class-name: $fluid-grid-class-name) {
+  .#{$class-name} {
+    width: (100% + $padding) / $cols;
+    padding: 0 0 $padding $padding;
+  }
+  @for $x from 1 through $grid-rows {
+    .#{$class-name}-#{$x * $cols - ($cols - 1)} {
+      margin-left: -$padding;
+      clear: both;
+    }
+  }
+}
+
+// old syntax
+@mixin region-col (
+  $rc-cols: $sg-cols,
+  $rc-spacing: $sg-spacing,
+  $rc-offset: $sg-offset,
+  $rc-margin-direction: $sg-margin-direction,
+  $rc-rows: $sg-rows
+  ){
+  @include symmetric-grid(
+    $rc-cols,
+    $rc-spacing,
+    $rc-offset,
+    $rc-margin-direction,
+    $rc-rows
+    );
+}
+
+
+@mixin width-25($padding: 0) {
+  width: 25%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-33($padding: 0) {
+  width: 33.33%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-50($padding: 0) {
+  width: 50%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-66($padding: 0) {
+  width: 66%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-75($padding: 0) {
+  width: 75%;
+  float: left;
+  padding: $padding;
+}
+
+@mixin width-100($padding: 0) {
+  width: 100%;
+}
+
+@mixin width-50-100($padding: 0) {
+  width: 100%;
+  float: left;
+  padding: $padding;
+  @include breakpoint($tablet-portrait) {
+    width: 50%;
+    float: left;
+    padding: $padding;
+  }
+}
