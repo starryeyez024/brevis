@@ -90,19 +90,15 @@ These files are the main entry points for the Sass compiler and shouldn't
 directly contain any CSS code, instead they only serves to combine the Sass
 contained in the partials (see below) through @import directives.
 
-#### nfl-team-base.styles.scss
+#### base.styles.scss
 This file aggregates all the components into a single file.
 
-#### nfl-team-base.normalize.scss
-This file provides a CSS reset/normalize generated based on the legacy
-variables.
-
-#### nfl-team-base.hacks.scss
+#### base.hacks.scss
 This file may be used to provide temporary hot-fixes for style issues that
 you plan to properly implement as components at a later point in time or simply
 don't have a proper solution for yet.
 
-#### nfl-team-base.no-query.scss
+#### base.no-query.scss
 This file re-renders the same contents as the styles.scss file but without any
 media queries. It can be used as a fallback for for older browsers that don't
 support media queries. You can find more information about this on the
