@@ -19,7 +19,7 @@ Compass::Frameworks.register('brevis', :path => extension_path)
 #    a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module Brevis
-  VERSION = "0.2.3"
+  VERSION = "0.2.4"
   DATE = "2015-02-06"
 end
 

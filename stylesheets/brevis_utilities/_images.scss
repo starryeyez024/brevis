@@ -99,6 +99,25 @@ $content-stream-img-md: 47.5%;
   }
 }
 
+@mixin svg-pro (
+  $filename,
+  $svg-class,
+  $no-svg-class: "lt-ie9") {
+
+  @if $svg-class {
+    background-image: image-url($filename + ".png");
+    .#{$svg-class} & {
+      background-image: image-url($filename + ".svg");
+    }
+  }
+  @else {
+    background-image: image-url($filename + ".svg");
+    .#{$no-svg-class} & {
+      background-image: image-url($filename + ".png");
+    }
+  }
+}
+
 // https://gist.github.com/darren131/3410875
 // @mixin resize-sprite($map, $sprite, $percent)
 //  $spritePath:    sprite-path($map)

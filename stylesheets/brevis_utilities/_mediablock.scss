@@ -46,8 +46,8 @@ $default-mediablock-bg-path: "images/icons/bulldog_transparent.png";
   float: left;
   margin-right: 20px;
   margin-bottom: 0px;
-  width: $mediablock-img-max-sm;
-  height: $mediablock-img-max-sm;
+  max-width: $mediablock-img-max-sm;
+  max-height: $mediablock-img-max-sm;
   @if $default-img-bg {
     background: 50% rgba(239, 243, 241, 0.56) no-repeat url("#{$default-mediablock-bg-path}");
     background-size: $mediablock-img-max-sm;
@@ -56,8 +56,8 @@ $default-mediablock-bg-path: "images/icons/bulldog_transparent.png";
     @include breakpoint($tablet-landscape) {
       margin-right: 45px;
       margin-bottom: 5px;
-      width: $mediablock-img-max-lg;
-      height: $mediablock-img-max-lg;
+      max-width: $mediablock-img-max-lg;
+      max-height: $mediablock-img-max-lg;
     }
   }
   &.icon {
@@ -95,7 +95,7 @@ $default-mediablock-bg-path: "images/icons/bulldog_transparent.png";
 @mixin mediablock-tight-view (
   $unit-name: ".views-row",
   $image-field: ".pane-node-field-shared-image",
-  $title-field: ".pane-node-title, .pane-butler-core-node-title-pane",
+  $title-field: ".pane-node-title",
   $body-field: ".pane-node-body",
   $default-img-bg: false,
   $larger-thumb-desktop: false,
