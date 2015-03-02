@@ -19,8 +19,8 @@ Compass::Frameworks.register('brevis', :path => extension_path)
 #    a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module Brevis
-  VERSION = "0.2.4"
-  DATE = "2015-02-06"
+  VERSION = "0.2.7"
+  DATE = "2015-02-27"
 end
 
 # This is where any custom SassScript should be placed. The functions will be

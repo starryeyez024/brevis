@@ -63,7 +63,7 @@ $icon-font: "FontAwesome";
 
 @mixin link($link-color: $link, $link-hover: $link-hover, $underline: no) {
   text-decoration: none;
-  &:link,
+  color: $link-color;
   &:visited {
     text-decoration: none;
     color: $link-color;
@@ -75,7 +75,7 @@ $icon-font: "FontAwesome";
       color: $link-hover;
     }
   }
-  @if $underline == yes {
+  @if $underline == yes OR $underline == true {
     //&.active,
     &:hover,
     &:focus {
